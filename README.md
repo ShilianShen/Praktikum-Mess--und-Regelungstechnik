@@ -10,6 +10,16 @@ $$
 V1 < V2 < V4 < V3
 $$
 
+## 成员
+
+Gruppe 9
+
+- Haotian Zheng
+- Junhong Zhou
+- Shilian Shen, 606903
+- Ximan Hong
+- Yingding Cheng
+
 ## 分工
 
 报告原则上「不安排修改后重新提交」, 所以需要审核.
