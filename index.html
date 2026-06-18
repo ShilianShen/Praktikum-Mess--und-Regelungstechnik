@@ -79,9 +79,19 @@
       image-rendering: crisp-edges;
     }
 
+    .image-title {
+      margin: 28px auto 0;
+      color: var(--text);
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      font-weight: normal;
+      line-height: 1.1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
     .description {
       max-width: 600px;
-      margin: 32px auto 0;
+      margin: 14px auto 0;
       font-size: clamp(1.05rem, 2.7vw, 1.35rem);
       line-height: 1.55;
       letter-spacing: 0.035em;
@@ -168,6 +178,7 @@
         <img id="heroImage" alt="" hidden crossorigin="anonymous" />
       </div>
 
+      <h1 class="image-title" id="imageTitle"></h1>
       <p class="description" id="description"></p>
 
       <div class="buttons" id="buttons" aria-label="Emoji 投掷按钮"></div>
@@ -180,6 +191,7 @@
       image: {
         src: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=1200&q=85",
         alt: "彩色天空与远方景色",
+        title: "彩色天空",
         pixelSize: 10
       },
       description: "一幅颜色明亮的风景。点击下方按钮，让 Emoji 穿过整个屏幕并在空中炸开。",
@@ -297,6 +309,9 @@
           "图片加载失败。若使用外部图片，请确认图片服务器允许跨域读取。";
       };
       image.src = config.image?.src || DEFAULT_CONFIG.image.src;
+
+      $("#imageTitle").textContent =
+        config.image?.title || DEFAULT_CONFIG.image.title;
 
       $("#description").textContent =
         config.description || DEFAULT_CONFIG.description;

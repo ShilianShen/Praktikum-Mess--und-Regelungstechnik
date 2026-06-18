@@ -1,10 +1,11 @@
 {
   "image": {
     "src": "./image.png",
-    "alt": "彩色天空与远方景色",
+    "alt": "Christian Bohn",
+    "title": "Christian Bohn",
     "pixelSize": 10
   },
-  "description": "香草·波恩",
+  "description": "这是「香草波恩」，他现在很饿，点击下方按钮进行投喂。",
   "buttons": [
     {
       "label": "Suppe",
