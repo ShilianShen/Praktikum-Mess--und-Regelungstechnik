@@ -1,0 +1,37 @@
+{
+  "image": {
+    "src": "https://www.iei.tu-clausthal.de/fileadmin/_processed_/9/7/csm_Foto__Christian_Bohn_afe2a74761.jpg",
+    "alt": "彩色天空与远方景色",
+    "pixelSize": 10
+  },
+  "description": "香草·波恩",
+  "buttons": [
+    {
+      "label": "Suppe",
+      "emoji": "💩"
+    },
+    {
+      "label": "Essen",
+      "emoji": "🍆"
+    },
+    {
+      "label": "Getränk",
+      "emoji": "🥛"
+    }
+  ],
+  "animation": {
+    "throwDuration": 850,
+    "explosionDuration": 1500,
+    "particleCount": 24,
+    "minSize": 24,
+    "maxSize": 54,
+    "explosionRadius": 340
+  },
+  "theme": {
+    "background": "#050505",
+    "text": "#f4efc7",
+    "muted": "#b8b28f",
+    "line": "#706b4f",
+    "imageWidth": "440px"
+  }
+}
