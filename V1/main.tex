@@ -1,0 +1,75 @@
+\documentclass[UTF8, a4paper, 12pt]{ctexart}
+
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[backend=biber, style=gb7714-2015]{biblatex}
+
+\geometry{
+  left=2.8cm,
+  right=2.8cm,
+  top=2.5cm,
+  bottom=2.5cm
+}
+
+\addbibresource{references.bib}
+
+\title{论文标题}
+\author{你的名字}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+这是论文摘要。这里简要说明研究背景、方法、结果和结论。
+\end{abstract}
+
+\section{引言}
+
+这是我的第一篇使用 VS Code 和 \LaTeX{} 编写的论文。
+
+可以使用引用，例如：相关研究指出，某方法具有较好的性能
+\parencite{knuth1984texbook}。
+
+\section{研究方法}
+
+行内公式示例：$E=mc^2$。
+
+独立公式示例：
+
+\begin{equation}
+  f(x)=\sum_{i=1}^{n}x_i
+  \label{eq:sum}
+\end{equation}
+
+公式~\eqref{eq:sum} 展示了一个求和表达式。
+
+\section{实验结果}
+
+表格示例：
+
+\begin{table}[htbp]
+  \centering
+  \caption{实验结果}
+  \label{tab:results}
+  \begin{tabular}{lcc}
+    \toprule
+    方法 & 准确率 & 运行时间 \\
+    \midrule
+    方法 A & 90.1\% & 10.2 s \\
+    方法 B & 93.5\% & 12.8 s \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{结论}
+
+这里总结研究结果，并说明研究局限和未来工作。
+
+\printbibliography
+
+\end{document}
