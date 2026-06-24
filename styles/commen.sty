@@ -1,12 +1,28 @@
-% Language and font setup. Compile with XeLaTeX or LuaLaTeX when Chinese text is used.
+% =========================================================
+% Sprache und Schriften / 语言与字体
+% =========================================================
+% iftex lets this file react to the compiler:
+% - pdfLaTeX: old 8-bit engine, good for plain German/English.
+% - XeLaTeX/LuaLaTeX: modern Unicode engines, needed for Chinese text.
+% 中文说明：这里根据编译器自动选择字体方案。含中文时建议用 XeLaTeX。
 \usepackage{iftex}
 \ifPDFTeX
+  % T1 improves German hyphenation and accented letters in pdfLaTeX.
+  % utf8 allows UTF-8 source files.
+  % newtxtext gives a Times-like serif font.
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{newtxtext}
 \else
+  % fontspec is the standard font package for XeLaTeX/LuaLaTeX.
+  % ctex adds Chinese typesetting support. fontset=fandol uses fonts
+  % shipped with TeX Live, so it works without macOS/Windows system fonts.
   \usepackage{fontspec}
   \usepackage[fontset=fandol]{ctex}
+
+  % Main text font: TeX Gyre Termes is similar to Times New Roman.
+  % The font is loaded by file name, which is more reliable than system
+  % font names when using XeLaTeX in different environments.
   \setmainfont{texgyretermes}[
     Extension=.otf,
     UprightFont=*-regular,
@@ -14,6 +30,9 @@
     ItalicFont=*-italic,
     BoldItalicFont=*-bolditalic
   ]
+
+  % Sans-serif font: TeX Gyre Heros is similar to Arial/Helvetica.
+  % Useful for labels, diagrams, and sans-serif text.
   \setsansfont{texgyreheros}[
     Extension=.otf,
     UprightFont=*-regular,
@@ -21,6 +40,8 @@
     ItalicFont=*-italic,
     BoldItalicFont=*-bolditalic
   ]
+
+  % Monospace font for code listings or terminal-style text.
   \setmonofont{lmmonolt10}[
     Extension=.otf,
     UprightFont=*-regular,
@@ -30,9 +51,15 @@
   ]
 \fi
 
+% ngerman selects German hyphenation and German names such as "Inhalt".
 \usepackage[ngerman]{babel}
 
-% Page layout: compact header/footer dimensions following the MRT guidance.
+% =========================================================
+% Seitenlayout / 页面布局
+% =========================================================
+% geometry controls paper size and margins.
+% The MRT notes suggest compact header/footer areas; these values keep
+% enough room for header text without wasting too much page space.
 \usepackage[
   a4paper,
   left=30mm,
@@ -44,21 +71,57 @@
   footskip=12mm
 ]{geometry}
 
-% Body text: justified paragraphs and at least 1.5 line spacing.
+% =========================================================
+% Absatz und Zeilenabstand / 段落与行距
+% =========================================================
+% Allg.md asks for justified paragraphs and at least 1.5 line spacing.
 \usepackage{setspace}
 \onehalfspacing
 
+% ragged2e provides \justifying. The AtBeginDocument hook applies it after
+% all packages and class settings have loaded.
 \usepackage{ragged2e}
 \AtBeginDocument{\justifying}
 
+% No first-line indentation; instead, separate paragraphs by vertical space.
+% This is a common report style and keeps short lab reports readable.
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.6em}
 
-% Mathematics and units.
+% =========================================================
+% Gemeinsame Titeldaten / 公共标题信息
+% =========================================================
+% Put information here when it is identical for V1, V2, V3, ...
+% Each main.tex then only needs \mrtmetadata{<title>}.
+\newcommand{\MRTAuthor}{
+  Shilian Shen, 606903\\
+  Haotian Zheng\\
+  Junhong Zhou\\
+  Ximan Hong, 606915\\
+  Yingding Cheng
+}
+
+% Usage in main.tex:
+%   \mrtmetadata{Versuch 1: Elementare Uebertragungsglieder}
+% This sets title, author, and date for \maketitle.
+\newcommand{\mrtmetadata}[1]{%
+  \title{#1}%
+  \author{\MRTAuthor}%
+  \date{\today}%
+}
+
+% =========================================================
+% Mathematik und Einheiten / 数学与单位
+% =========================================================
+% amsmath/amssymb/mathtools are the standard packages for equations,
+% symbols, aligned formulas, matrices, etc.
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{mathtools}
 
+% siunitx formats numbers and units consistently:
+%   \SI{3.5}{\volt} or \qty{3.5}{\volt}
+% locale=DE gives German number formatting conventions.
 \usepackage[
   locale=DE,
   separate-uncertainty=true,
@@ -66,23 +129,47 @@
 ]{siunitx}
 
 \sisetup{
+  % German decimal comma: 1,23 instead of 1.23.
   output-decimal-marker={,},
+  % Scientific notation product: 1,2 \cdot 10^3.
   exponent-product=\cdot
 }
 
+% Common shortcut: \R prints the real numbers symbol.
 \newcommand{\R}{\mathbb{R}}
 
-% Figures and tables.
+% =========================================================
+% Bilder und Tabellen / 图片与表格
+% =========================================================
+% graphicx provides \includegraphics.
 \usepackage{graphicx}
+
+% Search paths for figures. From V1/main.tex, "figures/" means V1/figures;
+% "../figures/" means a shared top-level figures folder.
 \graphicspath{{figures/}{../figures/}}
 
+% float provides [H] for placing a figure/table exactly "here".
+% Use [H] sparingly; normal floats [htbp] often produce nicer pages.
 \usepackage{float}
+
+% subcaption supports subfigures, e.g. (a), (b), inside one figure.
 \usepackage{subcaption}
+
+% booktabs gives professional table rules: \toprule, \midrule, \bottomrule.
 \usepackage{booktabs}
+
+% tabularx helps create tables with automatic-width text columns.
 \usepackage{tabularx}
+
+% array extends table column definitions.
 \usepackage{array}
+
+% longtable allows tables that continue across page breaks.
 \usepackage{longtable}
 
+% caption controls figure/table captions.
+% Allg.md says figures and tables need captions; figures usually below,
+% tables usually above.
 \usepackage[
   font=small,
   labelfont=bf,
@@ -93,7 +180,11 @@
 \captionsetup[figure]{position=bottom}
 \captionsetup[table]{position=top}
 
-% Lists.
+% =========================================================
+% Listen / 列表
+% =========================================================
+% enumitem gives control over list spacing. The settings below keep lists
+% compact, which matters in short reports with a page limit.
 \usepackage{enumitem}
 \setlist[itemize]{
   topsep=0.4em,
@@ -106,7 +197,13 @@
   parsep=0pt
 }
 
-% Number equations, figures and tables by chapter in reports, by section in articles.
+% =========================================================
+% Nummerierung / 编号
+% =========================================================
+% If the document class has chapters (report/scrreprt), number by chapter:
+%   Figure 2.3, Equation (2.3)
+% If the document class is article/scrartcl, number by section:
+%   Figure 1.2, Equation (1.2)
 \usepackage{chngcntr}
 \makeatletter
 \@ifundefined{chapter}{
@@ -120,10 +217,19 @@
 }
 \makeatother
 
-% Header and footer: current section/chapter plus page number.
+% =========================================================
+% Kopf- und Fusszeile / 页眉页脚
+% =========================================================
+% Allg.md asks for page number and current section name in header/footer.
+% fancyhdr is a simple package for this.
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+
+% Clear all default header/footer fields before setting our own.
 \fancyhf{}
+
+% Classes with chapters use \leftmark for the current chapter.
+% Article-like classes do not have chapters, so use \rightmark for sections.
 \makeatletter
 \@ifundefined{chapter}{
   \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
@@ -134,12 +240,21 @@
   \newcommand{\mrtcurrentmark}{\leftmark}
 }
 \makeatother
+
+% Left header: current chapter/section. Right header: report family name.
+% Center footer: page number.
 \fancyhead[L]{\nouppercase{\mrtcurrentmark}}
 \fancyhead[R]{MRT-Praktikum}
 \fancyfoot[C]{\thepage}
+
+% Thin rule under the header.
 \renewcommand{\headrulewidth}{0.4pt}
 
-% References and links. Load hyperref late, then cleveref.
+% =========================================================
+% Querverweise und Links / 交叉引用与链接
+% =========================================================
+% hyperref creates clickable links in the PDF.
+% It should usually be loaded late because it patches many LaTeX commands.
 \usepackage[
   unicode,
   hidelinks,
@@ -147,14 +262,25 @@
   bookmarksnumbered=true
 ]{hyperref}
 
+% cleveref improves references:
+%   \cref{fig:test} -> "Abbildung 1.1"
+% nameinlink makes the whole reference text clickable.
 \usepackage[
   german,
   nameinlink,
   noabbrev
 ]{cleveref}
 
-% Bibliography: numeric references in order of first citation.
+% =========================================================
+% Literatur / 参考文献
+% =========================================================
+% csquotes is recommended with biblatex, especially for German documents.
 \usepackage{csquotes}
+
+% biblatex manages citations and the bibliography.
+% backend=biber means LaTeX Workshop/latexmk will run biber automatically.
+% style=numeric gives citations like [1].
+% sorting=none keeps bibliography entries in citation order.
 \usepackage[
   backend=biber,
   style=numeric,
@@ -162,17 +288,29 @@
   giveninits=true
 ]{biblatex}
 
+% Use a bibliography file if it exists.
+% The first path is for a .bib next to main.tex, the second for a shared
+% .bib one directory above.
 \IfFileExists{literatur.bib}{\addbibresource{literatur.bib}}{}
 \IfFileExists{../literatur.bib}{\addbibresource{../literatur.bib}}{}
 
-% Optional source code listings.
+% =========================================================
+% Quellcode / 代码清单
+% =========================================================
+% listings formats source code blocks. Useful if Matlab/Python snippets
+% need to appear in the report.
 \usepackage{listings}
 \lstset{
+  % Monospace, small text.
   basicstyle=\ttfamily\small,
+  % Line numbers on the left.
   numbers=left,
   numberstyle=\tiny,
+  % Simple box around code.
   frame=single,
+  % Wrap long code lines instead of letting them run into the margin.
   breaklines=true,
   columns=fullflexible,
+  % Do not show spaces inside strings with special symbols.
   showstringspaces=false
 }

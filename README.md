@@ -21,10 +21,10 @@ $$
 
 Gruppe 9
 
+- Shilian Shen, 606903
 - Haotian Zheng
 - Junhong Zhou
-- Shilian Shen, 606903
-- Ximan Hong
+- Ximan Hong, 606915
 - Yingding Cheng
 
 ## 分工
