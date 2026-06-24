@@ -25,7 +25,7 @@ Gruppe 9
 - Haotian Zheng, 606848
 - Junhong Zhou, 606797
 - Ximan Hong, 606915
-- Yingding Cheng
+- Yingding Cheng, 606916
 
 ## 分工
 
