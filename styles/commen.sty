@@ -1,11 +1,178 @@
-\usepackage{ctex}
+% Language and font setup. Compile with XeLaTeX or LuaLaTeX when Chinese text is used.
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{newtxtext}
+\else
+  \usepackage{fontspec}
+  \usepackage[fontset=fandol]{ctex}
+  \setmainfont{texgyretermes}[
+    Extension=.otf,
+    UprightFont=*-regular,
+    BoldFont=*-bold,
+    ItalicFont=*-italic,
+    BoldItalicFont=*-bolditalic
+  ]
+  \setsansfont{texgyreheros}[
+    Extension=.otf,
+    UprightFont=*-regular,
+    BoldFont=*-bold,
+    ItalicFont=*-italic,
+    BoldItalicFont=*-bolditalic
+  ]
+  \setmonofont{lmmonolt10}[
+    Extension=.otf,
+    UprightFont=*-regular,
+    ItalicFont=*-oblique,
+    BoldFont=*-bold,
+    BoldItalicFont=*-boldoblique
+  ]
+\fi
 
-\usepackage{amsmath, amssymb}
-\usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage[a4paper, margin=2.5cm]{geometry}
-\usepackage{hyperref}
+\usepackage[ngerman]{babel}
 
-\graphicspath{{figures/}}
+% Page layout: compact header/footer dimensions following the MRT guidance.
+\usepackage[
+  a4paper,
+  left=30mm,
+  right=25mm,
+  top=25mm,
+  bottom=25mm,
+  headheight=15pt,
+  headsep=10mm,
+  footskip=12mm
+]{geometry}
+
+% Body text: justified paragraphs and at least 1.5 line spacing.
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{ragged2e}
+\AtBeginDocument{\justifying}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+% Mathematics and units.
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage[
+  locale=DE,
+  separate-uncertainty=true,
+  per-mode=symbol
+]{siunitx}
+
+\sisetup{
+  output-decimal-marker={,},
+  exponent-product=\cdot
+}
 
 \newcommand{\R}{\mathbb{R}}
+
+% Figures and tables.
+\usepackage{graphicx}
+\graphicspath{{figures/}{../figures/}}
+
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}
+
+\usepackage[
+  font=small,
+  labelfont=bf,
+  justification=justified,
+  singlelinecheck=false
+]{caption}
+
+\captionsetup[figure]{position=bottom}
+\captionsetup[table]{position=top}
+
+% Lists.
+\usepackage{enumitem}
+\setlist[itemize]{
+  topsep=0.4em,
+  itemsep=0.2em,
+  parsep=0pt
+}
+\setlist[enumerate]{
+  topsep=0.4em,
+  itemsep=0.2em,
+  parsep=0pt
+}
+
+% Number equations, figures and tables by chapter in reports, by section in articles.
+\usepackage{chngcntr}
+\makeatletter
+\@ifundefined{chapter}{
+  \numberwithin{equation}{section}
+  \counterwithin{figure}{section}
+  \counterwithin{table}{section}
+}{
+  \numberwithin{equation}{chapter}
+  \counterwithin{figure}{chapter}
+  \counterwithin{table}{chapter}
+}
+\makeatother
+
+% Header and footer: current section/chapter plus page number.
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\makeatletter
+\@ifundefined{chapter}{
+  \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+  \newcommand{\mrtcurrentmark}{\rightmark}
+}{
+  \renewcommand{\chaptermark}[1]{\markboth{\thechapter\ #1}{}}
+  \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+  \newcommand{\mrtcurrentmark}{\leftmark}
+}
+\makeatother
+\fancyhead[L]{\nouppercase{\mrtcurrentmark}}
+\fancyhead[R]{MRT-Praktikum}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% References and links. Load hyperref late, then cleveref.
+\usepackage[
+  unicode,
+  hidelinks,
+  bookmarksopen=true,
+  bookmarksnumbered=true
+]{hyperref}
+
+\usepackage[
+  german,
+  nameinlink,
+  noabbrev
+]{cleveref}
+
+% Bibliography: numeric references in order of first citation.
+\usepackage{csquotes}
+\usepackage[
+  backend=biber,
+  style=numeric,
+  sorting=none,
+  giveninits=true
+]{biblatex}
+
+\IfFileExists{literatur.bib}{\addbibresource{literatur.bib}}{}
+\IfFileExists{../literatur.bib}{\addbibresource{../literatur.bib}}{}
+
+% Optional source code listings.
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  numbers=left,
+  numberstyle=\tiny,
+  frame=single,
+  breaklines=true,
+  columns=fullflexible,
+  showstringspaces=false
+}

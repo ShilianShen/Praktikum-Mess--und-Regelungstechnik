@@ -5,3 +5,4 @@ local.*
 .vscode
 *.synctex.gz
 */indent.log
+*/main.bbl

@@ -1,209 +1,21 @@
 \documentclass[
   12pt,
   a4paper,
-  oneside,
   ngerman
-]{scrreprt}
+]{article}
 
-% =========================================================
-% 语言与字体
-% =========================================================
-\usepackage{fontspec}
-\usepackage{polyglossia}
+\usepackage{../styles/commen}
 
-\setdefaultlanguage{german}
-\setotherlanguage{english}
-
-% TeX Live 通常自带的字体
-\setmainfont{TeX Gyre Termes}      % 类似 Times New Roman
-\setsansfont{TeX Gyre Heros}       % 类似 Arial
-\setmonofont{Latin Modern Mono}
-
-% =========================================================
-% 页面布局
-% =========================================================
-\usepackage[
-  a4paper,
-  left=30mm,
-  right=25mm,
-  top=25mm,
-  bottom=25mm,
-  headheight=15pt,
-  headsep=10mm,
-  footskip=12mm
-]{geometry}
-
-% =========================================================
-% 段落与行距
-% =========================================================
-\usepackage{setspace}
-\onehalfspacing
-
-\usepackage{ragged2e}
-\AtBeginDocument{\justifying}
-
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.6em}
-
-% =========================================================
-% 数学公式与单位
-% =========================================================
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{mathtools}
-
-\usepackage[
-  locale=DE,
-  separate-uncertainty=true,
-  per-mode=symbol
-]{siunitx}
-
-% 德语小数逗号
-\sisetup{
-  output-decimal-marker={,},
-  exponent-product=\cdot
-}
-
-% 公式按章节编号，例如 (2.3)
-\numberwithin{equation}{chapter}
-
-% =========================================================
-% 图片
-% =========================================================
-\usepackage{graphicx}
-\graphicspath{{figures/}}
-
-\usepackage{float}
-\usepackage{subcaption}
-
-% =========================================================
-% 表格
-% =========================================================
-\usepackage{booktabs}
-\usepackage{tabularx}
-\usepackage{array}
-\usepackage{longtable}
-
-% =========================================================
-% 图表标题
-% =========================================================
-\usepackage[
-  font=small,
-  labelfont=bf,
-  justification=justified,
-  singlelinecheck=false
-]{caption}
-
-% 图题在下方，表题在上方
-\captionsetup[figure]{position=bottom}
-\captionsetup[table]{position=top}
-
-% 图表按章节编号，例如 Abbildung 2.3
-\counterwithin{figure}{chapter}
-\counterwithin{table}{chapter}
-
-% =========================================================
-% 页眉页脚
-% =========================================================
-\usepackage[
-  automark,
-  headsepline
-]{scrlayer-scrpage}
-
-\clearpairofpagestyles
-
-% 当前章节名称
-\ihead{\headmark}
-
-% 文档标题，可按需要修改
-\ohead{MRT-Praktikum}
-
-% 页码
-\cfoot{\pagemark}
-
-\pagestyle{scrheadings}
-
-% =========================================================
-% 列表
-% =========================================================
-\usepackage{enumitem}
-
-\setlist[itemize]{
-  topsep=0.4em,
-  itemsep=0.2em,
-  parsep=0pt
-}
-
-\setlist[enumerate]{
-  topsep=0.4em,
-  itemsep=0.2em,
-  parsep=0pt
-}
-
-% =========================================================
-% 交叉引用与超链接
-% =========================================================
-\usepackage[
-  german,
-  nameinlink,
-  noabbrev
-]{cleveref}
-
-\usepackage[
-  unicode,
-  hidelinks,
-  bookmarksopen=true,
-  bookmarksnumbered=true
-]{hyperref}
-
-% hyperref 通常应在大多数宏包之后加载；
-% cleveref 应在 hyperref 后加载，因此这里重新调整：
-\makeatletter
-\@ifpackageloaded{cleveref}{}{}
-\makeatother
-
-% =========================================================
-% 参考文献
-% =========================================================
-\usepackage[
-  backend=biber,
-  style=numeric,
-  sorting=none,
-  giveninits=true
-]{biblatex}
-
-\addbibresource{literatur.bib}
-
-% =========================================================
-% 代码与程序清单，可选
-% =========================================================
-\usepackage{listings}
-
-\lstset{
-  basicstyle=\ttfamily\small,
-  numbers=left,
-  numberstyle=\tiny,
-  frame=single,
-  breaklines=true,
-  columns=fullflexible,
-  showstringspaces=false
-}
-
-% =========================================================
-% 文档信息
-% =========================================================
-\title{Protokoll zum MRT-Praktikum}
-\author{
-  Name 1 \\
-  Name 2 \\
-  Name 3
-}
+\title{Versuch 1}
+\author{Gruppe 9}
 \date{\today}
 
 \begin{document}
 
 \maketitle
 
-Hello, World!
+\section{Einleitung}
+
+Hello World!
 
 \end{document}
