@@ -2,10 +2,10 @@
 
 目前的实验报告:
 
-- [实验1](./V1/build/main.pdf)
-- [实验2](./V2/build/main.pdf)
-- [实验3](./V3/build/main.pdf)
-- [实验4](./V4/build/main.pdf)
+- [实验1](./V1/main.pdf)
+- [实验2](./V2/main.pdf)
+- [实验3](./V3/main.pdf)
+- [实验4](./V4/main.pdf)
 
 > !!!这里的情报包含了官方以及衍生情报, 不是最原始的情报!!!
 
@@ -22,8 +22,8 @@ $$
 Gruppe 9
 
 - Shilian Shen, 606903
-- Haotian Zheng
-- Junhong Zhou
+- Haotian Zheng, 606848
+- Junhong Zhou, 606797
 - Ximan Hong, 606915
 - Yingding Cheng
 
@@ -67,7 +67,7 @@ Gruppe 9
 
 建议设定的章节是:
 
-1. Motivation / Einleitung 
+1. Motivation / Einleitung
 2. Versuchsaufbau / Versuchsdurchführung
 3. Ergebnisdiskussion
 4. Fehlerdiskussion

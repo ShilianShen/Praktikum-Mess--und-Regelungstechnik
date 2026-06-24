@@ -58,35 +58,52 @@
 % Seitenlayout / 页面布局
 % =========================================================
 % geometry controls paper size and margins.
-% The MRT notes suggest compact header/footer areas; these values keep
-% enough room for header text without wasting too much page space.
+% The uploaded conference-template-a4.docx uses IEEE-like A4 margins:
+%   left/right about 44.65 pt = 15.75 mm
+%   top about 54 pt = 19.05 mm
+%   bottom 72 pt = 25.40 mm
+% It also uses a two-column body with about 18 pt = 6.35 mm column gap.
 \usepackage[
   a4paper,
-  left=30mm,
-  right=25mm,
-  top=25mm,
-  bottom=25mm,
-  headheight=15pt,
-  headsep=10mm,
-  footskip=12mm
+  left=15.75mm,
+  right=15.75mm,
+  top=19.05mm,
+  bottom=25.4mm,
+  columnsep=6.35mm,
+  headheight=12pt,
+  headsep=6mm,
+  footskip=10mm
 ]{geometry}
 
 % =========================================================
 % Absatz und Zeilenabstand / 段落与行距
 % =========================================================
-% Allg.md asks for justified paragraphs and at least 1.5 line spacing.
+% The Word conference template uses compact 10 pt Times text with about
+% 11.4 pt line spacing and first-line indentation. This is different from
+% the general Allg.md note about 1.5 line spacing, but Vorgaben.md explicitly
+% points to this uploaded conference template.
 \usepackage{setspace}
-\onehalfspacing
+\setstretch{1}
+
+% etoolbox is used below to patch LaTeX's title command.
+\usepackage{etoolbox}
 
 % ragged2e provides \justifying. The AtBeginDocument hook applies it after
 % all packages and class settings have loaded.
 \usepackage{ragged2e}
-\AtBeginDocument{\justifying}
+\AtBeginDocument{%
+  \fontsize{10pt}{11.4pt}\selectfont
+  \justifying
+}
 
-% No first-line indentation; instead, separate paragraphs by vertical space.
-% This is a common report style and keeps short lab reports readable.
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.6em}
+% Template body text: first-line indent around 14.4 pt and only small
+% paragraph spacing.
+\setlength{\parindent}{14.4pt}
+\setlength{\parskip}{0pt}
+
+% Two-column body like the Word template. The title is handled specially
+% below so it can still span the full page width.
+\AtBeginDocument{\twocolumn}
 
 % =========================================================
 % Gemeinsame Titeldaten / 公共标题信息
@@ -101,14 +118,39 @@
   Yingding Cheng
 }
 
+% Institution text shown below the authors. Keep it empty if not needed.
+\newcommand{\MRTAffiliation}{%
+  Institut fuer elektrische Informationstechnik\\
+  Technische Universitaet Clausthal
+}
+
 % Usage in main.tex:
 %   \mrtmetadata{Versuch 1: Elementare Uebertragungsglieder}
 % This sets title, author, and date for \maketitle.
 \newcommand{\mrtmetadata}[1]{%
   \title{#1}%
   \author{\MRTAuthor}%
-  \date{\today}%
+  \date{\MRTAffiliation}%
 }
+
+% IEEE-like title block. In two-column mode, article.cls can place the title
+% across both columns using \twocolumn[...]. We patch \maketitle so main.tex
+% can still use the normal command.
+\makeatletter
+\renewcommand{\@maketitle}{%
+  \newpage
+  \null
+  \vskip -1.5em%
+  \begin{center}%
+    {\fontsize{24pt}{28pt}\selectfont \@title \par}%
+    \vskip 1.0em%
+    {\fontsize{11pt}{13pt}\selectfont \@author \par}%
+    \vskip 0.6em%
+    {\fontsize{9pt}{11pt}\itshape \@date \par}%
+  \end{center}%
+  \vskip 1.2em%
+}
+\makeatother
 
 % =========================================================
 % Mathematik und Einheiten / 数学与单位
@@ -168,17 +210,18 @@
 \usepackage{longtable}
 
 % caption controls figure/table captions.
-% Allg.md says figures and tables need captions; figures usually below,
-% tables usually above.
+% The Word template uses 8 pt captions, figure captions below figures,
+% and table headings above tables.
 \usepackage[
-  font=small,
+  font=footnotesize,
   labelfont=bf,
   justification=justified,
   singlelinecheck=false
 ]{caption}
 
-\captionsetup[figure]{position=bottom}
-\captionsetup[table]{position=top}
+% LaTeX places figure/table captions wherever \caption is written.
+% Convention: put \caption below figures and above tables in main.tex.
+\captionsetup{skip=4pt}
 
 % =========================================================
 % Listen / 列表
@@ -198,57 +241,55 @@
 }
 
 % =========================================================
+% Ueberschriften / 标题层级
+% =========================================================
+% titlesec lets us make LaTeX headings closer to the Word template:
+% - section: centered, small caps, compact spacing
+% - subsection: left aligned, italic, compact spacing
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\normalsize\scshape\centering}
+  {\thesection}
+  {0.8em}
+  {}
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+
+\titleformat{\subsection}
+  {\normalfont\normalsize\itshape}
+  {\thesubsection}
+  {0.8em}
+  {}
+\titlespacing*{\subsection}{0pt}{6pt}{3pt}
+
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\itshape}
+  {\thesubsubsection}
+  {0.8em}
+  {}
+\titlespacing*{\subsubsection}{\parindent}{2pt}{2pt}
+
+% =========================================================
 % Nummerierung / 编号
 % =========================================================
-% If the document class has chapters (report/scrreprt), number by chapter:
-%   Figure 2.3, Equation (2.3)
-% If the document class is article/scrartcl, number by section:
-%   Figure 1.2, Equation (1.2)
-\usepackage{chngcntr}
-\makeatletter
-\@ifundefined{chapter}{
-  \numberwithin{equation}{section}
-  \counterwithin{figure}{section}
-  \counterwithin{table}{section}
-}{
-  \numberwithin{equation}{chapter}
-  \counterwithin{figure}{chapter}
-  \counterwithin{table}{chapter}
-}
-\makeatother
+% The Word conference template numbers figures, tables and equations
+% consecutively through the whole document, e.g. Fig. 1, Table I, (1).
+% Therefore we do not reset these counters by section.
 
 % =========================================================
 % Kopf- und Fusszeile / 页眉页脚
 % =========================================================
-% Allg.md asks for page number and current section name in header/footer.
-% fancyhdr is a simple package for this.
+% The uploaded conference template has a very light header/footer style.
+% For the lab report we keep only the page number in the footer.
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
 % Clear all default header/footer fields before setting our own.
 \fancyhf{}
 
-% Classes with chapters use \leftmark for the current chapter.
-% Article-like classes do not have chapters, so use \rightmark for sections.
-\makeatletter
-\@ifundefined{chapter}{
-  \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-  \newcommand{\mrtcurrentmark}{\rightmark}
-}{
-  \renewcommand{\chaptermark}[1]{\markboth{\thechapter\ #1}{}}
-  \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-  \newcommand{\mrtcurrentmark}{\leftmark}
-}
-\makeatother
-
-% Left header: current chapter/section. Right header: report family name.
-% Center footer: page number.
-\fancyhead[L]{\nouppercase{\mrtcurrentmark}}
-\fancyhead[R]{MRT-Praktikum}
 \fancyfoot[C]{\thepage}
 
-% Thin rule under the header.
-\renewcommand{\headrulewidth}{0.4pt}
+% No visible header rule in the conference style.
+\renewcommand{\headrulewidth}{0pt}
 
 % =========================================================
 % Querverweise und Links / 交叉引用与链接
