@@ -1,0 +1,113 @@
+% =========================================================
+% Inhaltshilfen / 正文工具
+% =========================================================
+\NeedsTeXFormat{LaTeX2e}
+
+% =========================================================
+% Mathematik und Einheiten / 数学与单位
+% =========================================================
+% amsmath/amssymb/mathtools are the standard packages for equations,
+% symbols, aligned formulas, matrices, etc.
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{mathtools}
+
+% siunitx formats numbers and units consistently:
+%   \SI{3.5}{\volt} or \qty{3.5}{\volt}
+% locale=DE gives German number formatting conventions.
+\RequirePackage[
+  locale=DE,
+  separate-uncertainty=true,
+  per-mode=symbol
+]{siunitx}
+
+\sisetup{
+  % German decimal comma: 1,23 instead of 1.23.
+  output-decimal-marker={,},
+  % Scientific notation product: 1,2 \cdot 10^3.
+  exponent-product=\cdot
+}
+
+% Common shortcut: \R prints the real numbers symbol.
+\newcommand{\R}{\mathbb{R}}
+
+% =========================================================
+% Bilder und Tabellen / 图片与表格
+% =========================================================
+% graphicx provides \includegraphics.
+\RequirePackage{graphicx}
+
+% Search paths for figures. From V1/main.tex, "figures/" means V1/figures;
+% "../figures/" means a shared top-level figures folder.
+\graphicspath{{figures/}{../figures/}}
+
+% float provides [H] for placing a figure/table exactly "here".
+% Use [H] sparingly; normal floats [htbp] often produce nicer pages.
+\RequirePackage{float}
+
+% subcaption supports subfigures, e.g. (a), (b), inside one figure.
+\RequirePackage{subcaption}
+
+% booktabs gives professional table rules: \toprule, \midrule, \bottomrule.
+\RequirePackage{booktabs}
+
+% tabularx helps create tables with automatic-width text columns.
+\RequirePackage{tabularx}
+
+% array extends table column definitions.
+\RequirePackage{array}
+
+% longtable allows tables that continue across page breaks.
+\RequirePackage{longtable}
+
+% caption controls figure/table captions.
+% The Word template uses 8 pt captions, figure captions below figures,
+% and table headings above tables.
+\RequirePackage[
+  font=footnotesize,
+  labelfont=bf,
+  justification=justified,
+  singlelinecheck=false
+]{caption}
+
+% LaTeX places figure/table captions wherever \caption is written.
+% Convention: put \caption below figures and above tables in main.tex.
+\captionsetup{skip=4pt}
+
+% =========================================================
+% Listen / 列表
+% =========================================================
+% enumitem gives control over list spacing. The settings below keep lists
+% compact, which matters in short reports with a page limit.
+\RequirePackage{enumitem}
+\setlist[itemize]{
+  topsep=0.4em,
+  itemsep=0.2em,
+  parsep=0pt
+}
+\setlist[enumerate]{
+  topsep=0.4em,
+  itemsep=0.2em,
+  parsep=0pt
+}
+
+% =========================================================
+% Quellcode / 代码清单
+% =========================================================
+% listings formats source code blocks. Useful if Matlab/Python snippets
+% need to appear in the report.
+\RequirePackage{listings}
+\lstset{
+  % Monospace, small text.
+  basicstyle=\ttfamily\small,
+  % Line numbers on the left.
+  numbers=left,
+  numberstyle=\tiny,
+  % Simple box around code.
+  frame=single,
+  % Wrap long code lines instead of letting them run into the margin.
+  breaklines=true,
+  columns=fullflexible,
+  % Do not show spaces inside strings with special symbols.
+  showstringspaces=false
+}

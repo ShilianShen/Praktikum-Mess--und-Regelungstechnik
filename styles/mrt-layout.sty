@@ -1,0 +1,103 @@
+% =========================================================
+% Seitenlayout / 页面布局
+% =========================================================
+\NeedsTeXFormat{LaTeX2e}
+
+% geometry controls paper size and margins.
+% The uploaded conference-template-a4.docx uses IEEE-like A4 margins:
+%   left/right about 44.65 pt = 15.75 mm
+%   top about 54 pt = 19.05 mm
+%   bottom 72 pt = 25.40 mm
+% It also uses a two-column body with about 18 pt = 6.35 mm column gap.
+\RequirePackage[
+  a4paper,
+  left=15.75mm,
+  right=15.75mm,
+  top=19.05mm,
+  bottom=25.4mm,
+  columnsep=6.35mm,
+  headheight=12pt,
+  headsep=6mm,
+  footskip=10mm
+]{geometry}
+
+% =========================================================
+% Absatz und Zeilenabstand / 段落与行距
+% =========================================================
+% The Word conference template uses compact 10 pt Times text with about
+% 11.4 pt line spacing and first-line indentation. This is different from
+% the general Allg.md note about 1.5 line spacing, but Vorgaben.md explicitly
+% points to this uploaded conference template.
+\RequirePackage{setspace}
+\setstretch{1}
+
+% Kept available because older report snippets may rely on commen loading it.
+\RequirePackage{etoolbox}
+
+% ragged2e provides \justifying. The AtBeginDocument hook applies it after
+% all packages and class settings have loaded.
+\RequirePackage{ragged2e}
+\AtBeginDocument{%
+  \fontsize{10pt}{11.4pt}\selectfont
+  \justifying
+}
+
+% Template body text: first-line indent around 14.4 pt and only small
+% paragraph spacing.
+\setlength{\parindent}{14.4pt}
+\setlength{\parskip}{0pt}
+
+% Two-column body like the Word template. The title is handled specially
+% in mrt-title so it can still span the full page width.
+\AtBeginDocument{\twocolumn}
+
+% =========================================================
+% Ueberschriften / 标题层级
+% =========================================================
+% titlesec lets us make LaTeX headings closer to the Word template:
+% - section: centered, small caps, compact spacing
+% - subsection: left aligned, italic, compact spacing
+\RequirePackage{titlesec}
+\titleformat{\section}
+  {\normalfont\normalsize\scshape\centering}
+  {\thesection}
+  {0.8em}
+  {}
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+
+\titleformat{\subsection}
+  {\normalfont\normalsize\itshape}
+  {\thesubsection}
+  {0.8em}
+  {}
+\titlespacing*{\subsection}{0pt}{6pt}{3pt}
+
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\itshape}
+  {\thesubsubsection}
+  {0.8em}
+  {}
+\titlespacing*{\subsubsection}{\parindent}{2pt}{2pt}
+
+% =========================================================
+% Nummerierung / 编号
+% =========================================================
+% The Word conference template numbers figures, tables and equations
+% consecutively through the whole document, e.g. Fig. 1, Table I, (1).
+% Therefore we do not reset these counters by section.
+
+% =========================================================
+% Kopf- und Fusszeile / 页眉页脚
+% =========================================================
+% The uploaded conference template has a very light header/footer style.
+% For the lab report we keep only the page number in the footer.
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+
+% Clear all default header/footer fields before setting our own.
+\fancyhf{}
+
+\fancyfoot[C]{\thepage}
+
+% No visible header rule in the conference style.
+\renewcommand{\headrulewidth}{0pt}

@@ -1,0 +1,57 @@
+% =========================================================
+% Sprache und Schriften / 语言与字体
+% =========================================================
+\NeedsTeXFormat{LaTeX2e}
+
+% iftex lets this file react to the compiler:
+% - pdfLaTeX: old 8-bit engine, good for plain German/English.
+% - XeLaTeX/LuaLaTeX: modern Unicode engines, needed for Chinese text.
+% 中文说明：这里根据编译器自动选择字体方案。含中文时建议用 XeLaTeX。
+\RequirePackage{iftex}
+\ifPDFTeX
+  % T1 improves German hyphenation and accented letters in pdfLaTeX.
+  % utf8 allows UTF-8 source files.
+  % newtxtext gives a Times-like serif font.
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage{newtxtext}
+\else
+  % fontspec is the standard font package for XeLaTeX/LuaLaTeX.
+  % ctex adds Chinese typesetting support. fontset=fandol uses fonts
+  % shipped with TeX Live, so it works without macOS/Windows system fonts.
+  \RequirePackage{fontspec}
+  \RequirePackage[fontset=fandol]{ctex}
+
+  % Main text font: TeX Gyre Termes is similar to Times New Roman.
+  % The font is loaded by file name, which is more reliable than system
+  % font names when using XeLaTeX in different environments.
+  \setmainfont{texgyretermes}[
+    Extension=.otf,
+    UprightFont=*-regular,
+    BoldFont=*-bold,
+    ItalicFont=*-italic,
+    BoldItalicFont=*-bolditalic
+  ]
+
+  % Sans-serif font: TeX Gyre Heros is similar to Arial/Helvetica.
+  % Useful for labels, diagrams, and sans-serif text.
+  \setsansfont{texgyreheros}[
+    Extension=.otf,
+    UprightFont=*-regular,
+    BoldFont=*-bold,
+    ItalicFont=*-italic,
+    BoldItalicFont=*-bolditalic
+  ]
+
+  % Monospace font for code listings or terminal-style text.
+  \setmonofont{lmmonolt10}[
+    Extension=.otf,
+    UprightFont=*-regular,
+    ItalicFont=*-oblique,
+    BoldFont=*-bold,
+    BoldItalicFont=*-boldoblique
+  ]
+\fi
+
+% ngerman selects German hyphenation and German names such as "Inhalt".
+\RequirePackage[ngerman]{babel}

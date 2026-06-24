@@ -1,0 +1,48 @@
+% =========================================================
+% Gemeinsame Titeldaten / 公共标题信息
+% =========================================================
+\NeedsTeXFormat{LaTeX2e}
+
+% Put information here when it is identical for V1, V2, V3, ...
+% Each main.tex then only needs \mrtmetadata{<title>}.
+\newcommand{\MRTAuthor}{
+  Shilian Shen, 606903\\
+  Haotian Zheng, 606848\\
+  Junhong Zhou, 606797\\
+  Ximan Hong, 606915\\
+  Yingding Cheng, 606916\\
+}
+
+% Institution text shown below the authors. Keep it empty if not needed.
+\newcommand{\MRTAffiliation}{%
+  Institut fuer elektrische Informationstechnik\\
+  Technische Universitaet Clausthal
+}
+
+% Usage in main.tex:
+%   \mrtmetadata{Versuch 1: Elementare Uebertragungsglieder}
+% This sets title, author, and date for \maketitle.
+\newcommand{\mrtmetadata}[1]{%
+  \title{#1}%
+  \author{\MRTAuthor}%
+  \date{\MRTAffiliation}%
+}
+
+% IEEE-like title block. In two-column mode, article.cls can place the title
+% across both columns using \twocolumn[...]. We patch \maketitle so main.tex
+% can still use the normal command.
+\makeatletter
+\renewcommand{\@maketitle}{%
+  \newpage
+  \null
+  \vskip -1.5em%
+  \begin{center}%
+    {\fontsize{24pt}{28pt}\selectfont \@title \par}%
+    \vskip 1.0em%
+    {\fontsize{11pt}{13pt}\selectfont \@author \par}%
+    \vskip 0.6em%
+    {\fontsize{9pt}{11pt}\itshape \@date \par}%
+  \end{center}%
+  \vskip 1.2em%
+}
+\makeatother

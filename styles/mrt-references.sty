@@ -1,0 +1,45 @@
+% =========================================================
+% Querverweise, Links und Literatur / 交叉引用、链接与参考文献
+% =========================================================
+\NeedsTeXFormat{LaTeX2e}
+
+% hyperref creates clickable links in the PDF.
+% It should usually be loaded late because it patches many LaTeX commands.
+\RequirePackage[
+  unicode,
+  hidelinks,
+  bookmarksopen=true,
+  bookmarksnumbered=true
+]{hyperref}
+
+% cleveref improves references:
+%   \cref{fig:test} -> "Abbildung 1.1"
+% nameinlink makes the whole reference text clickable.
+\RequirePackage[
+  german,
+  nameinlink,
+  noabbrev
+]{cleveref}
+
+% =========================================================
+% Literatur / 参考文献
+% =========================================================
+% csquotes is recommended with biblatex, especially for German documents.
+\RequirePackage{csquotes}
+
+% biblatex manages citations and the bibliography.
+% backend=biber means LaTeX Workshop/latexmk will run biber automatically.
+% style=numeric gives citations like [1].
+% sorting=none keeps bibliography entries in citation order.
+\RequirePackage[
+  backend=biber,
+  style=numeric,
+  sorting=none,
+  giveninits=true
+]{biblatex}
+
+% Use a bibliography file if it exists.
+% The first path is for a .bib next to main.tex, the second for a shared
+% .bib one directory above.
+\IfFileExists{literatur.bib}{\addbibresource{literatur.bib}}{}
+\IfFileExists{../literatur.bib}{\addbibresource{../literatur.bib}}{}
