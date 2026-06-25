@@ -2,10 +2,10 @@
 
 目前的实验报告:
 
-- [实验1](./V1/main.pdf)
-- [实验2](./V2/main.pdf)
-- [实验3](./V3/main.pdf)
-- [实验4](./V4/main.pdf)
+- [实验1](https://shilianshen.github.io/Praktikum-Mess--und-Regelungstechnik/V1/main.pdf)
+- [实验2](https://shilianshen.github.io/Praktikum-Mess--und-Regelungstechnik/V2/main.pdf)
+- [实验3](https://shilianshen.github.io/Praktikum-Mess--und-Regelungstechnik/V3/main.pdf)
+- [实验4](https://shilianshen.github.io/Praktikum-Mess--und-Regelungstechnik/V4/main.pdf)
 
 > !!!这里的情报包含了官方以及衍生情报, 不是最原始的情报!!!
 
