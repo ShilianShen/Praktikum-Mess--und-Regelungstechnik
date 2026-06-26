@@ -7,18 +7,19 @@ figure;
 step(sys1, sys2, sys3, sys4);
 legend("1", "2", "3", "4");
 grid on;
-print(gcf, '-depsc2', 'myplot.eps');
-print(gcf, '-dpng', 'myplot.png');
+print(gcf, 'figures/V2_1.png', '-dpng', '-r300');
 close;
 
 figure;
 bode(sys1, sys2, sys3, sys4);
 legend("1", "2", "3", "4");
 grid on;
+print(gcf, 'figures/V4_1.png', '-dpng', '-r300');
 close;
 
 figure;
 pzmap(sys1, sys2, sys3, sys4);
 legend("1", "2", "3", "4");
 grid on;
+print(gcf, 'figures/V5_1.png', '-dpng', '-r300');
 close;

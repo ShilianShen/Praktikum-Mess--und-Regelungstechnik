@@ -6,13 +6,19 @@ figure;
 step(sys1, sys2, sys3);
 legend("1", "2", "3");
 grid on;
+print(gcf, 'figures/V2_2.png', '-dpng', '-r300');
+close;
 
 figure;
 bode(sys1, sys2, sys3);
 legend("1", "2", "3");
 grid on;
+print(gcf, 'figures/V4_2.png', '-dpng', '-r300');
+close;
 
 figure;
 pzmap(sys1, sys2, sys3);
 legend("1", "2", "3");
 grid on;
+print(gcf, 'figures/V5_2.png', '-dpng', '-r300');
+close;
