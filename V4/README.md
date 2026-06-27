@@ -210,38 +210,24 @@ f) 当参考频率为 1 MHz 时，为了在数字频率测定中保证至少 ±1
 
 ## Praktikumsversuch:
 
-## 实验步骤：
-
 1. Schließen Sie die Oszillatorschaltung an eine Spannungsquelle an und betrachten Sie das Ausgangssignal in Abhängigkeit von der Eintauchtiefe des Kondensators mit Hilfe eines Oszilloskops.
-
-1. 将振荡器电路连接到电源，并使用示波器观察输出信号随电容器浸入深度的变化。
-
 2. Schließen Sie den Komparator an die Oszillatorschaltung an und betrachten Sie das Ausgangssignal erneut.
-
-2. 将比较器连接到振荡器电路，并再次观察输出信号。
-
 3. Lesen Sie die Frequenz des Ausgangssignals, mit Hilfe eines Frequenzzählers, für verschiedene Eintauchtiefen des Kondensators (vollständig, zur Hälfte, in der Luft) ab.
-
-3. 使用频率计读取电容器在不同浸入深度（完全浸入、浸入一半、位于空气中）时输出信号的频率。
-
 4. Lesen Sie die Signalwerte der Oszillatorschaltung über eine Messkarte in den Rechner (Matlab) ein. Verwenden Sie dabei das Matlab-Skript „main.m“ im Ordner „Matlab_Vorlage“ auf dem Desktop des Versuchsrechners. Stellen Sie eine passende Abtastrate für das Signal ein.
-
-4. 通过测量卡将振荡器电路的信号值读入计算机（Matlab）。使用实验计算机桌面上“Matlab_Vorlage”文件夹中的 Matlab 脚本“main.m”。为信号设置合适的采样率。
-
 5. Programmieren Sie eine Schmitt-Trigger-Funktion mit der unteren und oberen Schaltschwelle als Eingangsparameter (vgl. Abbildung 7). Testen Sie die Funktion mit einem Sinussignal.
-
-5. 编写一个施密特触发器函数，将下开关阈值和上开关阈值作为输入参数（参见图 7）。使用正弦信号测试该函数。
-
 6. Bestimmen Sie aus der gewonnenen Impulsfolge die Anzahl der Impulse.
-
-6. 根据得到的脉冲序列确定脉冲数量。
-
 7. Rechnen Sie daraus wiederum die Frequenz der Impulse aus (benutzen Sie dazu die in Aufgabe 4 eingestellte Abtastrate).
-
-7. 由此计算脉冲频率（使用任务 4 中设置的采样率）。
-
 8. Automatisieren Sie die programmierten Schritte in einer Schleife und stellen Sie den Frequenzwert kontinuierlich dar.
 
+## 实验步骤：
+
+1.  将振荡器电路连接到电源，并使用示波器观察输出信号随电容器浸入深度的变化。
+2. 将比较器连接到振荡器电路，并再次观察输出信号。
+3. 使用频率计读取电容器在不同浸入深度（完全浸入、浸入一半、位于空气中）时输出信号的频率。
+4. 通过测量卡将振荡器电路的信号值读入计算机（Matlab）。使用实验计算机桌面上“Matlab_Vorlage”文件夹中的 Matlab 脚本“main.m”。为信号设置合适的采样率。
+5. 编写一个施密特触发器函数，将下开关阈值和上开关阈值作为输入参数（参见图 7）。使用正弦信号测试该函数。
+6. 根据得到的脉冲序列确定脉冲数量。
+7. 由此计算脉冲频率（使用任务 4 中设置的采样率）。
 8. 在循环中自动执行所编写的步骤，并连续显示频率值。
 
 ## Liste verfügbarer Geräte:
