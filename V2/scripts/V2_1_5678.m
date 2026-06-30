@@ -1,47 +1,48 @@
 clear all;
 
-x = [45.2 50.1 55.2 60.3 65.2 69.9 75.0 80.1 85.0 90.0 95.1 99.9 104.9 110.1 115.0]; % ˚C
-y = [1.93 2.11 2.27 2.53 2.73 2.91 3.14 3.34 3.48 3.67 3.87 4.03 4.23 4.50 4.72]; % V
-yb = [0.344 0.377 0.422 0.477 0.530 0.573 0.630 0.667 0.702 0.742 0.793 0.828 0.881 0.944 0.996]; % mV
+temp = [45.2 50.1 55.2 60.3 65.2 69.9 75.0 80.1 85.0 90.0 95.1 99.9 104.9 110.1 115.0]; % ˚C
+voltage = [1.93 2.11 2.27 2.53 2.73 2.91 3.14 3.34 3.48 3.67 3.87 4.03 4.23 4.50 4.72]; % V
+unamp_voltage = [0.344 0.377 0.422 0.477 0.530 0.573 0.630 0.667 0.702 0.742 0.793 0.828 0.881 0.944 0.996]; % V
 
-xr = [min(x), max(x)];
+temp_domain = [min(temp), max(temp)];
 
-[m, b, r] = lin_reg(x, y);
-yr = xr * m + b;
+[m, b, r] = lin_reg(temp, voltage);
+reg_voltage_range = temp_domain * m + b;
 
-[mb, bb, rb] = lin_reg(x, yb);
-ybr = xr * mb + bb;
+[unamp_m, unamp_b, unamp_r] = lin_reg(temp, unamp_voltage);
+reg_unamp_voltage_range = temp_domain * unamp_m + unamp_b;
 
-error_y = x * m + b - y;
-error_x = (y - b) / m - x;
+voltage_error = temp * m + b - voltage;
+temp_error = (voltage - b) / m - temp;
 
-
-figure();
+figure;
 hold on;
 grid on;
 title("U(T)");
-scatter(x, y);
-plot(xr, yr);
-scatter(x, yb);
-plot(xr, ybr);
+scatter(temp, voltage);
+plot(temp_domain, reg_voltage_range);
+scatter(temp, unamp_voltage);
+plot(temp_domain, reg_unamp_voltage_range);
 legend("orig verstärkt", "reg verstärkt", "orig nicht verstärkt", "reg nicht verstärkt")
 disp(r);
-disp(rb);
-% exportgraphics(gcf, 'figures/V2_1.pdf', 'ContentType', 'vector');
+disp(unamp_r);
+exportgraphics(gcf, 'figures/V2_1_char_curve.pdf', 'ContentType', 'vector');
 close;
 
-figure();
+figure;
 hold on;
 grid on;
 title("error of U(T)");
-scatter(x, error_y);
+scatter(temp, voltage_error);
+exportgraphics(gcf, 'figures/V2_1_voltage_error.pdf', 'ContentType', 'vector');
 close;
 
-figure();
+figure;
 hold on;
 grid on;
 title("error of T(U)");
-scatter(y, error_x);
+scatter(voltage, temp_error);
+exportgraphics(gcf, 'figures/V2_1_temp_error.pdf', 'ContentType', 'vector');
 close;
 
-disp(m / mb);
+disp(m / unamp_m);
