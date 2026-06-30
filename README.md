@@ -91,12 +91,14 @@ Gruppe 9
 
 建议设定的章节是:
 
-1. Motivation / Einleitung
-2. Versuchsaufbau / Versuchsdurchführung
-3. Ergebnisdiskussion
-4. Fehlerdiskussion
-5. Zusammenfassung
-6. Referenze
+1. Einleitung
+2. Versuchsaufbau
+3. Versuchsdurchführung
+4. Ergebnisdiskussion
+5. Fehlerdiskussion
+6. Zusammenfassung
+7. Referenzen
+8. Anhang
 
 ## 论文
 
