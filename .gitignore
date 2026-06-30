@@ -6,3 +6,4 @@ local.*
 *.synctex.gz
 */indent.log
 */main.bbl
+*$*

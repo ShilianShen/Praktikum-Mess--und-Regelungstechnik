@@ -1,13 +1,17 @@
-\documentclass{article}
-
-\title{Versuche 1}
-\author{Gruppe 9}
-\date{\today}
-
+\documentclass[10pt, a4paper, ngerman]{article}
+\usepackage{../styles/commen}
+\mrtmetadata{Versuch 2}
 \begin{document}
-
 \maketitle
+\section{Einleitung}
+\input{sections/einleitung.tex}
 
-Hello, World!
+Hello World!
+\includegraphics[
+  page=3,
+  trim=2cm 5cm 2cm 4cm,
+  clip,
+  width=0.8\textwidth
+]{source.pdf}
 
 \end{document}
