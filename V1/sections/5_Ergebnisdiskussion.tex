@@ -24,13 +24,13 @@
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{../figures/V2_1.pdf}
-  \caption{todo}
+  \caption{固定固有频率 $\omega_n=\sqrt{3}$、改变阻尼系数 $D$ 时 PT2 环节的阶跃响应}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{../figures/V2_2.pdf}
-  \caption{todo}
+  \caption{固定阻尼系数 $D=\frac{1}{3}$、改变固有频率 $\omega_n$ 时 PT2 环节的阶跃响应}
 \end{figure}
 
 当固有频率 $\omega$ 保持不变时，阻尼系数 $D$ 的影响如下：
@@ -45,6 +45,7 @@
 \begin{itemize}
   \item $\omega$ 越大，系统响应越快，并在更短时间内达到平衡状态。
   \item $\omega$ 减小时，系统变得更慢、更迟缓；若存在振荡，振荡频率也会降低。
+  \item 由于 $D$ 不变，相对超调趋势基本保持一致，但时间尺度随 $\omega_n$ 改变。
 \end{itemize}
 
 综上，PT2 系统的过渡行为主要可以通过参数 $\omega$ 和 $D$ 表征。
@@ -55,13 +56,13 @@
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{../figures/V4_1.pdf}
-  \caption{todo}
+  \caption{固定固有频率、改变阻尼系数时 PT2 环节的 Bode 图}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{../figures/V4_2.pdf}
-  \caption{todo}
+  \caption{固定阻尼系数、改变固有频率时 PT2 环节的 Bode 图}
 \end{figure}
 
 Bode 图显示了 PT2 系统的典型频率特性。
@@ -75,6 +76,8 @@ Bode 图显示了 PT2 系统的典型频率特性。
 较小的阻尼会导致更高的峰值（共振峰）以及在设定频率附近更明显的振荡。
 随着阻尼增大，响应曲线更加平滑，峰值减小。
 同时，相位过渡更加平缓，共振附近的突变减弱。
+当 $D \geq 1$ 时，共振峰基本消失，幅值曲线表现为单调下降。
+这与阶跃响应中无超调或无振荡的现象一致。
 
 \subsubsection{第二组}
 
@@ -82,19 +85,20 @@ Bode 图显示了 PT2 系统的典型频率特性。
 随着 $\omega$ 增大，系统的共振频率在图中向右移动。
 因此幅值峰值也向右移动，其高度和形状仍由固定的阻尼系数决定。
 与幅值类似，随着固有频率增大，相位变化的拐点也向较高频率移动。
+这说明固有频率主要改变频率轴上的尺度，而阻尼决定曲线形状。
 
 \subsection{零极点图}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{../figures/V5_1.pdf}
-  \caption{todo}
+  \caption{固定固有频率、改变阻尼系数时 PT2 环节的零极点图}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{../figures/V5_2.pdf}
-  \caption{todo}
+  \caption{固定阻尼系数、改变固有频率时 PT2 环节的零极点图}
 \end{figure}
 
 \subsubsection{结构与特征}

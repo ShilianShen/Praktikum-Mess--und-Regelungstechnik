@@ -1,9 +1,20 @@
 实验的搭建和实施主要借助 MATLAB 与 Simulink 完成。
+Simulink 用于构建基本传递环节并观察时域输出，MATLAB 脚本用于定义 PT2 传递函数并自动生成阶跃响应、Bode 图和零极点图。
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\linewidth]{../figures/V1.pdf}
-    \caption{Simulink 模型}
+    \caption{用于比较 P、I、PT1 和 PT2 环节阶跃响应的 Simulink 模型}
 \end{figure}
 
-在 Simulink 模型中实现具有给定参数的传递环节（P、I、PT1 和 PT2 环节），例如 $K_P = 2$、$T_1 = \SI{0.5}{\second}$ 和 $T_2 = \SI{0.5}{\second}$，以生成其阶跃响应。
+Simulink 模型由输入信号、各基本传递环节、Mux 模块以及 Scope 组成。
+输入端首先采用单位阶跃信号，用于比较不同环节的阶跃响应。
+在后续观察中，也可将阶跃输入替换为幅值和频率恒定的正弦输入，以验证线性时不变系统对正弦信号的频率响应性质。
+
+在模型中分别实现 P、I、PT1 和 PT2 环节。
+实验参数按任务要求选取为 $K_P = 2$、$T_1 = \SI{0.5}{\second}$ 和 $T_2 = \SI{1}{\second}$。
+P 环节用于显示比例放大，I 环节用于显示积分累积，PT1 和 PT2 环节用于显示具有惯性和储能效应的动态响应。
+
+所有输出信号通过 Mux 模块合成为一个向量，并在同一个 Scope 中显示。
+这样可以在相同时间轴下直接比较各环节的响应速度、稳态值以及是否出现振荡。
+为了进一步分析 PT2 环节，在 MATLAB 中使用 \texttt{tf} 定义传递函数，并使用 \texttt{step}、\texttt{bode} 和 \texttt{pzmap} 分别绘制阶跃响应、Bode 图和零极点图。

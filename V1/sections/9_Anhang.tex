@@ -1,0 +1,40 @@
+\subsection{使用的 MATLAB 命令}
+
+生成图像时主要使用以下 MATLAB 命令：
+
+\begin{itemize}
+  \item \texttt{tf}: 定义传递函数。
+  \item \texttt{step}: 绘制阶跃响应。
+  \item \texttt{bode}: 绘制 Bode 图。
+  \item \texttt{pzmap}: 绘制零极点图。
+  \item \texttt{legend} 和 \texttt{grid on}: 添加图例并显示网格。
+  \item \texttt{exportgraphics}: 将图像保存为 PDF。
+\end{itemize}
+
+\subsection{PT2 参数}
+
+对于如下形式的传递函数
+\[
+  G(s)=\frac{1}{a s^2 + b s + 1}
+\]
+与 $T^2s^2+2DTs+1$ 对比可得：
+\[
+  T=\sqrt{a},\qquad \omega_n=\frac{1}{T},\qquad D=\frac{b}{2T}.
+\]
+
+第一组图中 $a=\frac{1}{3}$ 保持不变，因此 $\omega_n=\sqrt{3}$。
+四个系统的阻尼系数为：
+\[
+  D_1=\frac{1}{3},\qquad
+  D_2=\frac{2}{3},\qquad
+  D_3=1,\qquad
+  D_4=\frac{3}{2}.
+\]
+
+第二组图中 $D=\frac{1}{3}$ 保持不变。
+三个系统的固有频率为：
+\[
+  \omega_{n,1}=\sqrt{3},\qquad
+  \omega_{n,2}=2,\qquad
+  \omega_{n,3}=\sqrt{6}.
+\]
