@@ -1,2 +1,4 @@
-Der Aufbau und die Durchführung des Versuchs erfolgen hauptsächlich mithilfe der Software-Tools MATLAB und Simulink.
-Im Simulink-Modell werden Übertragungsglieder (P-, I-, PT1- und PT2-Glieder) mit spezifischen Parametern wie $K_P = 2$, $T_1 = \SI{0.5}{\second}$ und $T_2 = \SI{0.5}{\second}$ implementiert, um deren Sprungantworten zu erzeugen.
+3.1 Messkette zur Temperaturmessung
+Die Messkette besteht aus dem NiCr-Ni-Thermoelement, dem Messwertumformer AD595, dem nichtinvertierenden Messverstärker, dem 8-Bit-AD-Wandler der Messkarte und einem Rechner zur Auswertung. Thermoelement und Referenzfühler werden möglichst dicht nebeneinander in das Ölbad eingebracht, damit beide Sensoren dieselbe Temperatur erfassen. Das AD595- und Verstärkerausgangssignal werden parallel mit Multimeter beziehungsweise Oszilloskop kontrolliert.
+3.3 Schaltung zur Störüberlagerung und Filterung
+Im zweiten Versuchsteil wird das Nutzsignal mit einem Pulssignal über eine Operationsverstärkerschaltung kombiniert. Am Ausgang dieser Stufe liegt das gestörte Messsignal an. Ein nachgeschalteter RC-Tiefpass reduziert die hochfrequente Komponente. Vor und nach dem Filter werden Frequenz, Spitzen-Spitzen-Wert und Gleichanteil gemessen.

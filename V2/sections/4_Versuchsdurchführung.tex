@@ -1,4 +1,9 @@
-Mithilfe von MATLAB Simulink werden die Sprungantworten der elementaren Übertragungsglieder erstellt.
-Die Simulation erfolgt mit den Parametern $K_P = 2$, $T_1 = \SI{0.5}{\second}$ und $T_2 = \SI{0.5}{\second}$.
-
-Um das dynamische Verhalten der verschiedenen Systeme direkt und übersichtlich vergleichen zu können, werden alle Ausgangssignale mithilfe eines Mux-Blocks zusammengeführt und gemeinsam auf einem Scope (Oszilloskop) visualisiert.
+4 Versuchsdurchführung
+4.1 Aufbau und Funktionsprüfung
+Zunächst wurden Versorgungsspannungen und Massebezüge geprüft. Anschließend wurde der AD595 mit dem Thermoelement verbunden und das Ausgangssignal bei Raumtemperatur kontrolliert. Danach wurde der nichtinvertierende Verstärker mit den berechneten Widerstandswerten aufgebaut. Vor Anschluss an den ADC wurde sichergestellt, dass die Ausgangsspannung im gesamten vorgesehenen Temperaturbereich zwischen 0 V und 5 V bleibt und keine Sättigung des Operationsverstärkers auftritt.
+4.2 Kalibriermessung im Ölbad
+Thermoelement und Referenzfühler wurden gemeinsam in das Ölbad eingebracht. Während des Erwärmens beziehungsweise Abkühlens wurden mehrere ausreichend stationäre Betriebspunkte aufgenommen. Für jeden Betriebspunkt wurden Referenztemperatur, AD595-Ausgang und Ausgang des Messverstärkers dokumentiert. Zwischen den Messpunkten wurde gewartet, bis sich die Anzeige nur noch geringfügig änderte. Die Messwertpaare wurden anschließend in MATLAB importiert und linear regressiert.
+4.3 Echtzeit-Temperaturanzeige
+Die Regressionsparameter m und b wurden in die Auswertesoftware übernommen. Die am ADC gemessene Spannung wurde gemäß T = (U-b)/m in eine Temperatur umgerechnet und fortlaufend angezeigt. Die digitale Anzeige wurde bei mehreren Temperaturen mit dem Referenzsystem verglichen.
+4.4 Störüberlagerung und Tiefpassfilterung
+Die Frequenz und Amplitude des Pulsgenerators wurden zunächst direkt am Oszilloskop bestimmt. Danach wurde das Störsignal dem Nutzsignal überlagert. Aus der gemessenen Störfrequenz und der geforderten Dämpfung wurden R und C des Tiefpasses berechnet und an den Dekaden eingestellt. Das gestörte und das gefilterte Signal wurden zeitgleich beobachtet. Abschließend wurde die Echtzeitanzeige erneut ausgeführt und die verbleibende Schwankung bewertet.

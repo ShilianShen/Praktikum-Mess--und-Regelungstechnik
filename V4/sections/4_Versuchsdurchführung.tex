@@ -1,4 +1,25 @@
-Mithilfe von MATLAB Simulink werden die Sprungantworten der elementaren Übertragungsglieder erstellt.
-Die Simulation erfolgt mit den Parametern $K_P = 2$, $T_1 = \SI{0.5}{\second}$ und $T_2 = \SI{0.5}{\second}$.
+4.1 Verbindung der Oszillatorschaltung und Betrachten des Ausgangsignals
+Schließen die Oszillatorschaltung an eine Spannungsquelle an，Dabei wird die Veränderung des Signals in Abhängigkeit von der Eintauchtiefe des Kondensators beobachtet. Für den Kondensator in Luft wurde eine Signalfrequenz von 948,35 kHz gemessen.
+4.2 Verbindung des Komparators
+Der Ausgang der Oszillatorschaltung wird mit einem Komparator verbunden, um das Signal zu digitalisieren. Der Komparator wird so eingestellt, dass er bei einer bestimmten Spannungsschwelle schaltet, wodurch ein rechteckiges Ausgangssignal erzeugt wird. Dadurch kann die Frequenz des Signals präzise bestimmt und eventuelle Störungen minimiert werden.
+4.3 Ablesen der Frequenz des Ausgangssignals
+Bei der ersten Messreihe wird der Kondensator vollständig in die Flüssigkeit eingetaucht. Anschließend werden die daraus resultierende Kapazität sowie die Ausgangsfrequenz mithilfe eines Frequenzmessgeräts erfasst. Um zuverlässige und reproduzierbare Messwerte zu erhalten, wird dieser Vorgang mehrfach wiederholt.
+Aus dem Bild：f(23cm)= 343,371kHz
+Im Anschluss wird der Kondensator bei mehreren festgelegten Füllständen teilweise in die Flüssigkeit eingetaucht. Für jeden definierten Pegel werden die jeweiligen Kapazitätswerte und Ausgangsfrequenzen gemessen und anschließend protokolliert.
+Aus dem Bild：f(34cm)=372,657kHz
 
-Um das dynamische Verhalten der verschiedenen Systeme direkt und übersichtlich vergleichen zu können, werden alle Ausgangssignale mithilfe eines Mux-Blocks zusammengeführt und gemeinsam auf einem Scope (Oszilloskop) visualisiert.
+4.4 Signalwerte mit Messkarte einlesen
+Die Signalwerte der Oszillatorschaltung werden mithilfe einer Messkarte an den Rechner übermittelt und anschließend in MATLAB ausgewertet. Dazu kommt das Skript „main.m“ aus dem Ordner „Matlab_Vorlage“ auf dem Desktop des Versuchsrechners zum Einsatz. Es ist unbedingt eine geeignete Abtastrate für das Messsignal einzustellen.
+
+（采样的真实数据，这图是参考报告里的示例）
+4.5 Schmitt-Trigger-Funktion
+Der Schmitt-Trigger wechselt die Ausgangsspannung auf den Höchstwert Ua,max, sobald der positive Schaltpegel Uein erreicht wird. Sobald der negative Schaltpegel Uaus überschritten wird, schaltet er auf den Minimalwert Ua,min um.In MATLAB wird die Funktion wie folgt implementiert:
+
+（施密特代码截图，这图是参考报告里的示例）
+（画出的波形图，这图是参考报告里的示例）
+In der Abbildung ist zu sehen, dass T=_, Nx=_, fx=Nx/T=_.
+（画出的波形图，这图是参考报告里的示例）
+4.6Automatisierung der Schritte
+Die programmierten Arbeitsabläufe wurden mithilfe einer Schleife automatisiert. Dadurch lassen sich die Frequenzwerte fortlaufend berechnen und unmittelbar am Bildschirm anzeigen. Auf diese Weise ist eine dauernde Signalüberwachung und Auswertung ohne weitere manuelle Eingriffe möglich, wodurch genaue und gleichbleibende Messergebnisse sichergestellt werden.
+
+（自动化代码截图，这图是参考报告里的示例）

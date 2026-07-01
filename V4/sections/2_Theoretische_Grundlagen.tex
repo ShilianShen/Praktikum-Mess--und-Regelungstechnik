@@ -1,0 +1,26 @@
+Die kapazitive Füllstandsmessung nutzt den physikalischen Effekt, dass die Kapazität eines Kondensators von dem zwischen den Elektroden befindlichen Dielektrikum abhängt.
+（1）Kapazitätberechnung
+Die Kapazität eines Plattenkondensators mit Dielektrikum lässt sich mit folgender Formel berechnen:
+wobei A die Kondensatorfläche, d den Plattenabstand und ε die Permittivität charak-terisiert.
+In diesem Versuch wird die Kapazität einer Lecher-Leitung verwendet. Sie lässt sich mit folgender Formel berechnen:
+wobei I für die Länge der Leiter, d für den Abstand zwischen den Leiter-mittelpunkten und R für den Radius der Leiter steht.
+（1）LC-Schwingkreises
+Im Praktikum soll die Kapazitäts-bestimmung mit einem LC-Schwingkreis nach dem Resonanzprinzip erfolgen. Dazuwird die unbekannte Messkapazität in einer Parallelschaltung mit einer bekannten In-duktivität ergänzt.
+Unter der Annahme eines verlustlosen Schwingkreises lässt sich der komplexe Widerstand zu
+berechnen.
+Mit der Forderung nach einer maximalen Impedanz eines solchen Schwingkreises kanndaraus direkt auf die Resonanzfrequenz geschlossen werden:
+(3) Oszillatorschaltung
+Zur präzisen Ermittlung der Resonanzfrequenz wird der Resonator üblicherweise in eine Oszillatorschaltung eingebunden. Der darin arbeitende selbstschwingende Oszillator passt sich automatisch an die Eigenfrequenz des frequenzbestimmenden Elements, beispielsweise eines LC-Schwingkreises oder eines Quarzes, an und stellt ein stabiles periodisches Signal für die anschließende Messung und Auswertung bereit.
+(4) Digitalen Frequenzmessung
+Die zu messende Frequenz wird durch den Vergleich mit einer bekannten Referenzuhr bestimmt. Konkret werden das Messsignal und das Referenzsignal in digitale Impulse umgewandelt und innerhalb eines festgelegten Zeitfensters jeweils gezählt. Anhand der aufgezeichneten Impulszahlen kann die zu messende Frequenz gemäß der folgenden Beziehung berechnet werden:
+(5) Komparator
+Ein Komparator dient dazu, das analoge Signal des Oszillators in ein digitales
+Rechtecksignal umzuwandeln. Die Ausgangsspannung des Komparators wechselt
+dabei zwischen den Pegeln Ua,max und Ua,min, abhängig davon, ob die
+Eingangsspannung U1 über oder unter dem Vergleichswert U2 liegt.
+(6) Schmitt-Trigger
+Zur Sicherstellung einer stabilen digitalen Signalverarbeitung kommt ein Schmitt-Trigger zum Einsatz. Im Unterschied zu einem einfachen Komparator besitzt dieser zwei festgelegte Schaltschwellen, nämlich eine obere und eine untere Schwelle. Dadurch entsteht eine Hysterese, die unerwünschte Schaltvorgänge bei verrauschten Eingangssignalen unterdrückt. Auf diese Weise wird eine zuverlässige Impulszählung zur Bestimmung der Frequenz ermöglicht.
+(7) Systematischer Fehlerfortpflanzung
+Bei vielen Messaufgaben ist die Größe (y) nicht direkt messbar, sondern ergibt sich über eine Funktion y=f(x1,x2,...,xi) aus mehreren Einflussgrößen. Daraus folgt für die Fortpflanzung systematischer Abweichungen:
+Damit kann der Einfluss einzelner Abweichungen auf das Messergebnis abgeschätzt
+werden.

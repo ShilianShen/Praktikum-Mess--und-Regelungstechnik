@@ -1,0 +1,32 @@
+2.1 Thermoelement und Seebeck-Effekt
+Ein Thermoelement besteht aus zwei unterschiedlichen elektrisch leitfähigen Werkstoffen. Befinden sich die beiden Kontaktstellen auf unterschiedlichen Temperaturen, führt die temperaturabhängige Elektronendiffusion zu einer messbaren Thermospannung. Für einen begrenzten Temperaturbereich kann der Zusammenhang näherungsweise linear beschrieben werden [1]:
+U₀ = k_AB · (T₂ - T₁)	(2.1)
+Für das im Versuch verwendete NiCr-Ni-Thermoelement beträgt der im Versuchsskript angegebene Seebeck-Koeffizient k_AB = 37,5 µV/K. Da eine absolute Temperaturmessung eine bekannte Referenztemperatur voraussetzt, wird am AD595 eine elektronische Vergleichsstellenkompensation eingesetzt.
+
+2.2 Messwertumformer AD595
+Der AD595 übernimmt zwei Aufgaben: Er verstärkt die geringe Thermospannung und kompensiert die Temperatur der Anschluss- beziehungsweise Vergleichsstelle. Die nominale Ausgangsempfindlichkeit beträgt laut Versuchsskript 10 mV/°C. Damit gilt im idealisierten Arbeitsbereich:
+U_AD595 ≈ 10 mV/°C · ϑ	(2.2)
+Bei 100 °C wird daher eine Ausgangsspannung von ungefähr 1,00 V erwartet. Abweichungen entstehen unter anderem durch Bauteiltoleranzen, Nichtlinearität, Offset und unvollständige thermische Kopplung der Vergleichsstelle.
+2.3 Nichtinvertierender Messverstärker
+Zur besseren Ausnutzung des ADC-Eingangsbereichs wird das AD595-Signal mit einem nichtinvertierenden Operationsverstärker verstärkt. Für den idealen Operationsverstärker gilt [1]:
+V = U_a/U_e = 1 + R₂/R₁	(2.3)
+
+Der Verstärkungsfaktor muss so gewählt werden, dass die maximale erwartete Temperatur den ADC-Eingangsbereich nicht überschreitet. Bei 120 °C liefert der AD595 idealerweise 1,20 V. Für U_ADC,max = 5 V folgt V_max = 5/1,2 = 4,17. Eine geeignete Sollauslegung ist beispielsweise R₁ = 10,0 kΩ und R₂ = 31,6 kΩ, entsprechend V ≈ 4,16. Die tatsächlich eingestellten Dekadenwerte sind im Ergebnisteil anzugeben.
+2.4 Analog-Digital-Wandler
+Der AD-Wandler diskretisiert, quantisiert und codiert das analoge Eingangssignal. Für einen m-Bit-Wandler mit dem Bereich U_min bis U_max ergibt sich die kleinste Schrittweite gemäß Versuchsskript zu:
+ΔU_LSB = (U_max - U_min)/(2ᵐ - 1)	(2.4)
+Mit m = 8, U_min = 0 V und U_max = 5 V beträgt die Schrittweite 19,61 mV. Ohne Zusatzverstärkung entspricht dies bei 10 mV/°C einer Temperaturstufe von 1,96 °C. Bei V = 4,17 verbessert sich die theoretische Temperaturauflösung auf etwa 0,47 °C. Der Quantisierungsfehler beträgt idealisiert höchstens ±0,5 LSB.
+Zur Kalibrierung wird ein linearer Zusammenhang zwischen Referenztemperatur T und gemessener Ausgangsspannung U angenommen:
+U(T) = m · T + b	(2.5)
+Die Regressionsparameter werden mit der Methode der kleinsten Quadrate bestimmt:
+m = Σ[(Tᵢ-T̄)(Uᵢ-Ū)] / Σ[(Tᵢ-T̄)²]	(2.6)
+b = Ū - m·T̄	(2.7)
+r = Σ[(Tᵢ-T̄)(Uᵢ-Ū)] / √(Σ[(Tᵢ-T̄)²]·Σ[(Uᵢ-Ū)²])	(2.8)
+Für die spätere Echtzeitberechnung wird die Regressionsgerade invertiert: T = (U-b)/m. Ein Betrag des Korrelationskoeffizienten nahe 1 zeigt einen starken linearen Zusammenhang, ersetzt jedoch nicht die Untersuchung systematischer Abweichungen und Residuen.
+2.6 RC-Tiefpass
+Ein Tiefpass erster Ordnung reduziert hochfrequente Störungen, während langsame Temperaturänderungen weitgehend passieren. Grenzfrequenz, Zeitkonstante und Amplitudengang lauten:
+f_g = 1/(2πRC),   τ = RC	(2.9)
+|H(j2πf)| = 1/√(1+(f/f_g)²)	(2.10)
+A_dB = 20·log₁₀(U_nach/U_vor)	(2.11)
+
+Eine Dämpfung von 60 dB entspricht einem Amplitudenverhältnis von 10⁻³. Für eine Störfrequenz von 1 MHz müsste die Grenzfrequenz eines Tiefpasses erster Ordnung näherungsweise höchstens 1 kHz betragen. Die endgültige Dimensionierung erfolgt mit der im Versuch tatsächlich gemessenen Störfrequenz und verfügbaren Dekadenwerten.
