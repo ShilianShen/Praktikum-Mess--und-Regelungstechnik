@@ -1,4 +1,7 @@
-3.1 Messkette zur Temperaturmessung
-Die Messkette besteht aus dem NiCr-Ni-Thermoelement, dem Messwertumformer AD595, dem nichtinvertierenden Messverstärker, dem 8-Bit-AD-Wandler der Messkarte und einem Rechner zur Auswertung. Thermoelement und Referenzfühler werden möglichst dicht nebeneinander in das Ölbad eingebracht, damit beide Sensoren dieselbe Temperatur erfassen. Das AD595- und Verstärkerausgangssignal werden parallel mit Multimeter beziehungsweise Oszilloskop kontrolliert.
-3.3 Schaltung zur Störüberlagerung und Filterung
-Im zweiten Versuchsteil wird das Nutzsignal mit einem Pulssignal über eine Operationsverstärkerschaltung kombiniert. Am Ausgang dieser Stufe liegt das gestörte Messsignal an. Ein nachgeschalteter RC-Tiefpass reduziert die hochfrequente Komponente. Vor und nach dem Filter werden Frequenz, Spitzen-Spitzen-Wert und Gleichanteil gemessen.
+\subsection{温度测量链}
+
+测量链由 NiCr-Ni 热电偶、AD595 测量变换器、同相测量放大器、测量卡的 8 位 AD 转换器以及用于数据处理的计算机组成。热电偶和参考传感器尽可能彼此靠近地放入油浴中，使两个传感器测量相同温度。AD595 输出信号和放大器输出信号分别通过万用表或示波器并行检查。
+
+\subsection{干扰叠加与滤波电路}
+
+在第二个实验部分中，有用信号通过运算放大器电路与脉冲信号组合。该级输出端得到受干扰的测量信号。后接的 RC 低通滤波器降低高频分量。滤波器前后分别测量频率、峰峰值和直流分量。

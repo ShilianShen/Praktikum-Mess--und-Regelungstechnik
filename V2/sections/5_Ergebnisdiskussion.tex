@@ -1,9 +1,11 @@
-Die gemessene Kennlinie zeigt [EINTRAGEN: lineares / teilweise nichtlineares] Verhalten. Die Regressionsgerade lautet U = [m]·T + [b]. Der Korrelationskoeffizient r = [ ] weist auf [BEWERTUNG] hin. Die größte Abweichung zwischen Referenztemperatur und regressionsbasierter Temperatur beträgt [ ] °C und tritt bei [ ] °C auf.
+测得的特性曲线表现为[填写：线性/部分非线性]行为。回归直线为 $U = [m] \cdot T + [b]$。相关系数 $r = [\,]$ 表明[评价]。参考温度与基于回归计算的温度之间的最大偏差为 $[\,]\,\si{\celsius}$，出现在 $[\,]\,\si{\celsius}$ 处。
 
-Der Mittelwert der absoluten Abweichung beträgt [ ] °C. Die beobachtete Streuung liegt bei [ ] °C. Damit ist die praktische Genauigkeit [BESSER / SCHLECHTER] als die aus der ADC-Quantisierung allein erwartete Auflösung.
+绝对偏差的平均值为 $[\,]\,\si{\celsius}$。观察到的离散程度为 $[\,]\,\si{\celsius}$。因此，实际精度比仅由 ADC 量化所预期的分辨率[更好/更差]。
 
-Aus den gemessenen Amplituden ergibt sich A_dB = 20·log₁₀(U_nach/U_vor) = [ ] dB. Die geforderte Dämpfung von [ ] dB wird damit [ERREICHT / NICHT ERREICHT]. Die verbleibende Schwankung der digitalen Temperaturanzeige beträgt [ ] °C. Durch die Zeitkonstante τ = [ ] s entsteht eine erkennbare Verzögerung von [BEOBACHTUNG].
+由测得的幅值得到 $A_{\mathrm{dB}} = 20 \log_{10}(U_{\mathrm{nach}}/U_{\mathrm{vor}}) = [\,]\,\si{\decibel}$。因此要求的 $[\,]\,\si{\decibel}$ 衰减[达到/未达到]。数字温度显示的剩余波动为 $[\,]\,\si{\celsius}$。由于时间常数 $\tau = [\,]\,\si{\second}$，产生了可观察到的延迟：[观察结果]。
 
-Die Zusatzverstärkung verbessert die Ausnutzung des ADC-Eingangsbereichs deutlich. Im idealen Fall sinkt die temperaturäquivalente Quantisierungsstufe von etwa 1,96 °C auf ungefähr 0,47 °C. Die experimentell bestimmte Steigung von [ ] V/°C weicht um [ ] % vom theoretischen Wert [ ] V/°C ab. Als plausible Ursachen kommen Widerstandstoleranzen, die reale Verstärkung des AD595, Offsetspannungen und die begrenzte Genauigkeit der Spannungsmessung in Betracht.
-Die Kalibrierkennlinie ist anhand von r, R² und den Residuen zu bewerten. Ein hoher Korrelationskoeffizient bestätigt zwar den linearen Trend, zeigt jedoch nicht, ob einzelne Temperaturbereiche systematisch abweichen. Daher sind insbesondere die Differenzen T_Anzeige - T_ref zu betrachten. Im vorliegenden Versuch beträgt die maximale absolute Abweichung [ ] °C. [HIER BEWERTEN, OB DIE ABWEICHUNG FÜR DIE AUFGABE AKZEPTABEL IST].
-Der RC-Tiefpass reduziert die hochfrequente Störung um [ ] dB. Der Unterschied zwischen theoretischer und gemessener Dämpfung beträgt [ ] dB. Mögliche Ursachen sind Toleranzen von R und C, die endliche Ausgangsimpedanz der vorgeschalteten Stufe, die Eingangslast der Messkarte sowie eine nicht rein sinusförmige Störung. Gleichzeitig verlangsamt der Tiefpass den Temperaturverlauf. Die gewählte Grenzfrequenz stellt somit einen Kompromiss zwischen Störunterdrückung und Reaktionsgeschwindigkeit dar.
+附加放大显著改善了 ADC 输入范围的利用。在理想情况下，温度等效量化步长从约 $\SI{1.96}{\celsius}$ 降至约 $\SI{0.47}{\celsius}$。实验确定的斜率 $[\,]\,\si{\volt\per\celsius}$ 与理论值 $[\,]\,\si{\volt\per\celsius}$ 相差 $[\,]\,\%$。可能原因包括电阻公差、AD595 的实际增益、偏置电压以及电压测量精度有限。
+
+校准特性曲线应根据 $r$、$R^2$ 和残差进行评价。较高的相关系数虽然确认了线性趋势，但不能说明某些温度区间是否存在系统偏差。因此尤其需要考察差值 $T_{\mathrm{Anzeige}} - T_{\mathrm{ref}}$。在本实验中，最大绝对偏差为 $[\,]\,\si{\celsius}$。[此处评价该偏差对于任务是否可接受。]
+
+RC 低通滤波器将高频干扰降低了 $[\,]\,\si{\decibel}$。理论衰减与实测衰减之间的差值为 $[\,]\,\si{\decibel}$。可能原因包括 $R$ 和 $C$ 的公差、前级有限的输出阻抗、测量卡输入负载以及干扰并非纯正弦信号。同时，低通滤波器会减慢温度变化过程。因此所选截止频率是在抑制干扰和响应速度之间的折中。

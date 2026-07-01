@@ -1,9 +1,15 @@
-4 Versuchsdurchführung
-4.1 Aufbau und Funktionsprüfung
-Zunächst wurden Versorgungsspannungen und Massebezüge geprüft. Anschließend wurde der AD595 mit dem Thermoelement verbunden und das Ausgangssignal bei Raumtemperatur kontrolliert. Danach wurde der nichtinvertierende Verstärker mit den berechneten Widerstandswerten aufgebaut. Vor Anschluss an den ADC wurde sichergestellt, dass die Ausgangsspannung im gesamten vorgesehenen Temperaturbereich zwischen 0 V und 5 V bleibt und keine Sättigung des Operationsverstärkers auftritt.
-4.2 Kalibriermessung im Ölbad
-Thermoelement und Referenzfühler wurden gemeinsam in das Ölbad eingebracht. Während des Erwärmens beziehungsweise Abkühlens wurden mehrere ausreichend stationäre Betriebspunkte aufgenommen. Für jeden Betriebspunkt wurden Referenztemperatur, AD595-Ausgang und Ausgang des Messverstärkers dokumentiert. Zwischen den Messpunkten wurde gewartet, bis sich die Anzeige nur noch geringfügig änderte. Die Messwertpaare wurden anschließend in MATLAB importiert und linear regressiert.
-4.3 Echtzeit-Temperaturanzeige
-Die Regressionsparameter m und b wurden in die Auswertesoftware übernommen. Die am ADC gemessene Spannung wurde gemäß T = (U-b)/m in eine Temperatur umgerechnet und fortlaufend angezeigt. Die digitale Anzeige wurde bei mehreren Temperaturen mit dem Referenzsystem verglichen.
-4.4 Störüberlagerung und Tiefpassfilterung
-Die Frequenz und Amplitude des Pulsgenerators wurden zunächst direkt am Oszilloskop bestimmt. Danach wurde das Störsignal dem Nutzsignal überlagert. Aus der gemessenen Störfrequenz und der geforderten Dämpfung wurden R und C des Tiefpasses berechnet und an den Dekaden eingestellt. Das gestörte und das gefilterte Signal wurden zeitgleich beobachtet. Abschließend wurde die Echtzeitanzeige erneut ausgeführt und die verbleibende Schwankung bewertet.
+\subsection{搭建与功能检查}
+
+首先检查供电电压和接地参考。随后将 AD595 与热电偶连接，并在室温下检查输出信号。之后使用计算得到的电阻值搭建同相放大器。在连接 ADC 之前，确认输出电压在整个预期温度范围内保持在 $\SI{0}{\volt}$ 到 $\SI{5}{\volt}$ 之间，并且运算放大器不发生饱和。
+
+\subsection{油浴中的校准测量}
+
+热电偶和参考传感器共同放入油浴。在加热或冷却过程中，记录多个足够稳定的工作点。对于每个工作点，记录参考温度、AD595 输出和测量放大器输出。在各测量点之间等待，直到显示值只发生很小变化。随后将测量值对导入 MATLAB 并进行线性回归。
+
+\subsection{实时温度显示}
+
+将回归参数 $m$ 和 $b$ 写入分析软件。ADC 测得的电压按照 $T = (U - b)/m$ 换算为温度并连续显示。在多个温度点处，将数字显示值与参考系统进行比较。
+
+\subsection{干扰叠加与低通滤波}
+
+首先直接在示波器上确定脉冲发生器的频率和幅值。之后将干扰信号叠加到有用信号上。根据测得的干扰频率和要求的衰减计算低通滤波器的 $R$ 和 $C$，并在十进制电阻电容箱上设置。同步观察受干扰信号和滤波后信号。最后再次运行实时显示，并评价剩余波动。

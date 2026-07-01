@@ -1,12 +1,18 @@
-6.1 systematische Fehler
-Kalibrierungsfehler:
-Eine fehlerhafte Kalibrierung der Messgeräte verursacht systematische Messfehler. Wurde die Kalibrierung nicht ordnungsgemäß vorgenommen, weichen die ermittelten Messwerte von den physikalisch tatsächlichen Werten ab. Um diese Abweichung so gering wie möglich zu halten, sind die Messgeräte regelmäßig und gewissenhaft zu kalibrieren – am besten unmittelbar vor jeder Messreihe.
-Temperaturschwankungen:
-Temperaturschwankungen verändern die elektrischen Eigenschaften der Bauelemente, vor allem die Kapazität des Kondensators sowie die Kennwerte der gesamten Schaltung. Eine konstante Umgebungstemperatur während der Messung oder der Einsatz von Temperaturkompensationsmaßnahmen tragen dazu bei, diese Fehlerquelle einzudämmen.
-Parasitische Kapazitäten:
-Parasitäre Kapazitäten, verursacht durch metallische Gegenstände in der Nähe oder die Verdrahtung der Schaltung, führen zu verfälschten Messergebnissen. Durch einen sorgfältig ausgelegten Versuchsaufbau sowie abgeschirmte Leitungen und Bauteile lassen sich diese Störeffekte deutlich verringern.
-6.2 Zufällige Fehler
-Rauschen und Störungen:
-Elektronisches Rauschen sowie elektromagnetische Störungen beeinträchtigen die Signalgüte und verursachen Ungenauigkeiten bei den Messungen. Um diesen Einfluss einzudämmen, sind gut abgeschirmte Messgeräte einzusetzen und der Versuchsaufbau in einer störungsarmen Umgebung aufzubauen. Zusätzlich lassen sich die Messdaten mit digitalen Filtern bearbeiten, um Störanteile herauszufiltern.
-Messunsicherheiten durch digitale Zählung:
-Bei der Frequenzmessung mittels digitaler Zählschaltungen treten Zählfehler auf, welche die Messgenauigkeit herabsetzen. Eine Verlängerung der Messzeit sowie eine Erhöhung der Abtastrate senken die Messunsicherheit und ermöglichen genauere Messergebnisse. Aus dem verwendeten Skript ergeben sich konkrete Optimierungsfragen für die Frequenzbestimmung. Beispielsweise ist zu klären, wie viele Messwerte erfasst werden müssen, um eine vorgegebene Messunsicherheit einzuhalten.
+\subsection{系统误差}
+
+\paragraph{校准误差}
+测量仪器校准不正确会导致系统测量误差。如果校准未按规定进行，所得测量值会偏离物理真实值。为了尽可能减小这种偏差，应定期且认真地校准测量仪器，最好在每组测量前立即进行。
+
+\paragraph{温度波动}
+温度波动会改变元件的电学性质，尤其是电容器的电容以及整个电路的特性参数。测量过程中保持恒定环境温度，或采用温度补偿措施，有助于抑制这一误差来源。
+
+\paragraph{寄生电容}
+由附近金属物体或电路布线引起的寄生电容会导致测量结果失真。通过精心设计实验装置，以及使用屏蔽导线和元件，可以显著减小这些干扰效应。
+
+\subsection{随机误差}
+
+\paragraph{噪声和干扰}
+电子噪声以及电磁干扰会降低信号质量，并导致测量不准确。为了抑制这一影响，应使用良好屏蔽的测量仪器，并在低干扰环境中搭建实验装置。此外，还可以用数字滤波器处理测量数据，以滤除干扰分量。
+
+\paragraph{数字计数引起的测量不确定度}
+使用数字计数电路进行频率测量时会出现计数误差，从而降低测量精度。延长测量时间以及提高采样率可以降低测量不确定度，并得到更准确的测量结果。由所用脚本可以提出频率确定中的具体优化问题。例如，需要明确为了满足给定测量不确定度必须采集多少个测量值。

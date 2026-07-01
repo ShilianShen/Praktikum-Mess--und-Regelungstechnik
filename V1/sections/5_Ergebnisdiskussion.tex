@@ -1,120 +1,120 @@
-\subsection{Vergleich der Übertragungsglieder}
+\subsection{传递环节比较}
 
-\paragraph{P-Glied}
-Bei einem Einheitssprung reagiert das System sofort auf die Änderung des Eingangssignals und erreicht seinen stationären Endwert ohne Verzögerung.
-Bei sinusförmigem Eingang liefert es ein verstärktes Ausgangssignal ohne Phasenverschiebung, da das Signal lediglich proportional verstärkt wird.
+\paragraph{P 环节}
+在单位阶跃输入下，系统会立即响应输入信号的变化，并无延迟地达到其稳态终值。
+在正弦输入下，输出信号被放大但没有相位偏移，因为该环节只进行比例放大。
 
-\paragraph{I-Glied}
-Bei einem Einheitssprung zeigt das System eine linear ansteigende Ausgangsgröße, da es das Eingangssignal über die Zeit integriert.
-Diese lineare Steigung ist das charakteristische Merkmal von Integrationssystemen.
+\paragraph{I 环节}
+在单位阶跃输入下，系统输出量线性上升，因为它对输入信号随时间进行积分。
+这种线性斜率是积分系统的典型特征。
 
-\paragraph{PT1-Glied}
-Bei einem Einheitssprung erreicht das System nach einer Einschwingzeit einen stationären Endwert.
-Es nähert sich diesem Endwert exponentiell an, wobei die Verzögerung von der Zeitkonstante $T$ abhängt.
-Bei sinusförmigem Eingang zeigt es im Gegensatz zum P-Glied eine Phasenverschiebung sowie eine reduzierte Amplitude, was typisch für Systeme mit speicherndem Verhalten ist.
+\paragraph{PT1 环节}
+在单位阶跃输入下，系统经过一定过渡时间后达到稳态终值。
+它以指数形式接近该终值，其中延迟由时间常数 $T$ 决定。
+在正弦输入下，与 P 环节不同，PT1 环节会出现相位偏移和幅值减小，这是具有储能行为系统的典型特征。
 
-\paragraph{PT2-Glied}
-Bei einem Einheitssprung reagiert dieses Glied am trägsten.
-Es nähert sich dem stationären Endwert nur langsam an und kann abhängig von der vorhandenen Dämpfung auch ein leichtes Überschwingen aufweisen.
-Bei sinusförmigem Eingang treten wie beim PT1-Glied Phasenverschiebungen und reduzierte Amplituden auf.
-Aufgrund der höheren Systemordnung sind Verzögerung und Dämpfung jedoch stärker ausgeprägt als beim PT1-Glied.
+\paragraph{PT2 环节}
+在单位阶跃输入下，该环节的响应最慢。
+它缓慢接近稳态终值，并且根据阻尼大小可能出现轻微超调。
+在正弦输入下，与 PT1 环节一样会出现相位偏移和幅值减小。
+由于系统阶次更高，延迟和阻尼效应比 PT1 环节更加明显。
 
-\subsection{Darstellung der Sprungantworten}
+\subsection{阶跃响应表示}
 
-\subsubsection{Versuchsziel und Anforderungen}
+\subsubsection{实验目标与要求}
 
-In diesem Versuchsteil wird das Verhalten verschiedener PT2-Glieder bei einem Einheitssprung untersucht.
-Ein MATLAB-Skript definiert die entsprechenden Übertragungsfunktionen und simuliert die Sprungantworten.
-Dabei sollen die Eigenfrequenz $\omega$ und der Dämpfungsfaktor $D$ bestimmt sowie deren Einfluss auf das dynamische Verhalten, insbesondere Reaktionsgeschwindigkeit, Überschwingen und Einschwingzeit, analysiert werden.
+本实验部分研究不同 PT2 环节在单位阶跃输入下的行为。
+MATLAB 脚本定义相应的传递函数并仿真阶跃响应。
+其中需要确定固有频率 $\omega$ 和阻尼系数 $D$，并分析它们对动态行为的影响，尤其是对响应速度、超调和调节时间的影响。
 
-\subsubsection{Einfluss der Parameter}
+\subsubsection{参数影响}
 
-Bei konstanter Eigenfrequenz $\omega$ zeigt der Dämpfungsfaktor $D$ folgenden Einfluss:
+当固有频率 $\omega$ 保持不变时，阻尼系数 $D$ 的影响如下：
 \begin{itemize}
-  \item $D = 0$ (ungedämpft): Das System zeigt eine Dauerschwingung mit konstanter Amplitude und kommt nicht zur Ruhe.
-  \item $0 < D < 1$ (schwach gedämpft): Das System schwingt über, die Amplitude nimmt jedoch im Laufe der Zeit ab, bis der stationäre Endwert erreicht ist.
-  \item $D = 1$ (aperiodischer Grenzfall): Das System erreicht den stationären Endwert so schnell wie möglich, ohne zu schwingen oder überzuschwingen.
-  \item $D > 1$ (stark gedämpft): Es treten keine Schwingungen auf, jedoch reagiert das System sehr träge und benötigt deutlich mehr Zeit, um den stationären Endwert zu erreichen.
+  \item $D = 0$（无阻尼）：系统出现幅值恒定的持续振荡，不能自行稳定。
+  \item $0 < D < 1$（弱阻尼）：系统发生超调，但幅值随时间逐渐减小，直到达到稳态终值。
+  \item $D = 1$（非周期临界情况）：系统以尽可能快的速度达到稳态终值，且不发生振荡或超调。
+  \item $D > 1$（强阻尼）：系统不发生振荡，但响应非常迟缓，需要明显更长时间才能达到稳态终值。
 \end{itemize}
 
-Bei konstantem Dämpfungsfaktor $D$ wirkt sich die Eigenfrequenz $\omega$ folgendermaßen aus:
+当阻尼系数 $D$ 保持不变时，固有频率 $\omega$ 的影响如下：
 \begin{itemize}
-  \item Bei größerem $\omega$ reagiert das System schneller und erreicht den Gleichgewichtszustand in kürzerer Zeit.
-  \item Eine Verringerung von $\omega$ macht das System langsamer und träger; falls Schwingungen auftreten, nimmt auch die Schwingungsfrequenz ab.
+  \item $\omega$ 越大，系统响应越快，并在更短时间内达到平衡状态。
+  \item $\omega$ 减小时，系统变得更慢、更迟缓；若存在振荡，振荡频率也会降低。
 \end{itemize}
 
-\subsubsection{Fazit}
+\subsubsection{结论}
 
-Zusammenfassend lässt sich sagen, dass sich das Einschwingverhalten eines PT2-Systems maßgeblich durch die Parameter $\omega$ und $D$ charakterisieren lässt.
-Die Eigenfrequenz $\omega$ bestimmt in erster Linie die Reaktionsgeschwindigkeit, während der Dämpfungsfaktor $D$ für die Stabilität und die Neigung zu Schwingungen bzw. Überschwingern verantwortlich ist.
+综上，PT2 系统的过渡行为主要可以通过参数 $\omega$ 和 $D$ 表征。
+固有频率 $\omega$ 主要决定响应速度，而阻尼系数 $D$ 决定稳定性以及振荡或超调倾向。
 
-\subsection{Bode-Diagramm}
+\subsection{Bode 图}
 
-Das Bode-Diagramm zeigt den typischen Verlauf für das System: Unterhalb der Resonanzfrequenz steigt die Amplitudenverstärkung zunächst allmählich an und fällt nach Erreichen der Resonanzfrequenz wieder ab.
-Der Phasengang beginnt bei $0^\circ$ und nimmt mit steigender Frequenz langsam ab.
-Bei Erreichen der Eigenfrequenz $\omega_n$ liegt die Phase bei etwa $-90^\circ$, und bei sehr hohen Frequenzen nähert sie sich schließlich dem Wert von $-180^\circ$ an.
+Bode 图显示了该系统的典型变化规律：在低于共振频率时，幅值增益首先逐渐上升，达到共振频率后又下降。
+相位曲线从 $0^\circ$ 开始，并随频率升高逐渐减小。
+当达到固有频率 $\omega_n$ 时，相位约为 $-90^\circ$；在很高频率下，最终接近 $-180^\circ$。
 
-\subsubsection{Eigenschaften der Versuchsobjekte}
+\subsubsection{实验对象特性}
 
-Die Versuchsobjekte sind verschiedene PT2-Glieder.
-Ihr Frequenzverhalten wird durch Bode-Diagramme für Amplitude und Phase simuliert und dargestellt.
-Die Objekte werden in zwei Gruppen unterteilt, um das Verhalten der Kurven bei Variation der Dämpfung einerseits und der Eigenfrequenz andererseits systematisch zu analysieren.
+实验对象为不同的 PT2 环节。
+其频率特性通过幅值和相位的 Bode 图进行仿真和表示。
+对象分为两组，以便分别系统分析改变阻尼和改变固有频率时曲线的变化。
 
-\subsubsection{Erste Gruppe}
+\subsubsection{第一组}
 
-Bei der ersten Gruppe wird die Dämpfung $D$ bei einer festen Eigenfrequenz variiert.
-Eine geringere Dämpfung führt zu höheren Spitzen (Resonanzüberhöhung) und deutlicheren Schwingungen bei der eingestellten Frequenz.
-Mit zunehmender Dämpfung wird die Reaktionskurve glatter, die Spitzenbildung geht zurück und das System geht schneller in den höheren Frequenzbereich über.
-Außerdem erhöht sich mit zunehmender Dämpfung die Änderungsrate der Phase, sodass die Phasenverzögerung bei ein und derselben Frequenz geringer ausfällt.
+第一组在固定固有频率下改变阻尼 $D$。
+较小的阻尼会导致更高的峰值（共振峰）以及在设定频率附近更明显的振荡。
+随着阻尼增大，响应曲线更加平滑，峰值减小，系统更快过渡到较高频率区域。
+此外，随着阻尼增大，相位变化率也会提高，因此在同一频率下相位滞后较小。
 
-\subsubsection{Zweite Gruppe}
+\subsubsection{第二组}
 
-Bei der zweiten Gruppe wird die Eigenfrequenz $\omega$ bei einem festen Dämpfungsfaktor $D$ verändert.
-Mit zunehmendem $\omega$ verschiebt sich die Resonanzfrequenz des Systems im Diagramm nach rechts.
-Folglich verschiebt sich auch die Amplitudenspitze in diese Richtung, wobei deren Höhe und Form weiterhin vom festen Dämpfungsfaktor abhängen.
-Analog zur Amplitude verschiebt sich mit zunehmender Eigenfrequenz auch der Wendepunkt der Phasenänderung hin zu höheren Frequenzen.
+第二组在固定阻尼系数 $D$ 下改变固有频率 $\omega$。
+随着 $\omega$ 增大，系统的共振频率在图中向右移动。
+因此幅值峰值也向右移动，其高度和形状仍由固定的阻尼系数决定。
+与幅值类似，随着固有频率增大，相位变化的拐点也向较高频率移动。
 
-\subsection{Pol-Nullstellen-Diagramm}
+\subsection{零极点图}
 
-\subsubsection{Aufbau und Merkmale}
+\subsubsection{结构与特征}
 
-Das Pol-Nullstellen-Diagramm stellt die Singularitäten der Systemübertragungsfunktion geometrisch in der komplexen $s$-Ebene ($s = \sigma + j\omega_d$) dar.
-Ein klassisches PT2-Glied besitzt genau zwei Pole (die Nullstellen des Nennerpolynoms) und keine Nullstellen im Zähler.
-Die geometrische Lage dieser Pole bestimmt fundamental das Stabilitäts- und Einschwingverhalten des Systems:
+零极点图在复 $s$ 平面（$s = \sigma + j\omega_d$）中几何表示系统传递函数的奇异点。
+经典 PT2 环节恰好具有两个极点（分母多项式的零点），而分子中没有零点。
+这些极点的几何位置从根本上决定系统的稳定性和过渡行为：
 \begin{itemize}
-  \item Stabilität: Da sich die Pole in der linken Halbebene ($\sigma < 0$) befinden, ist das System absolut stabil.
-  \item Realteil ($\sigma = -D\omega_n$): Er bestimmt die Abklinggeschwindigkeit des Ausgleichsvorgangs. Je negativer der Realteil, desto schneller klingt die Schwingung ab.
-  \item Imaginärteil ($\omega_d = \omega_n \sqrt{1 - D^2}$): Er repräsentiert die gedämpfte Eigenfrequenz, also die tatsächliche Schwingungsfrequenz im Zeitbereich.
+  \item 稳定性：由于极点位于左半平面（$\sigma < 0$），系统是绝对稳定的。
+  \item 实部（$\sigma = -D\omega_n$）：它决定过渡过程的衰减速度。实部越负，振荡衰减越快。
+  \item 虚部（$\omega_d = \omega_n \sqrt{1 - D^2}$）：它表示阻尼固有频率，也就是时域中的实际振荡频率。
 \end{itemize}
 
-\subsubsection{Erste Gruppe: Variation des Dämpfungsfaktors}
+\subsubsection{第一组：改变阻尼系数}
 
-In der ersten Versuchsgruppe wird der Dämpfungsfaktor $D$ systematisch variiert, während die Eigenfrequenz $\omega_n$ auf einem konstanten Wert fixiert bleibt.
-Die experimentellen Daten zeigen folgende Ortsveränderungen der Pole:
+第一实验组系统改变阻尼系数 $D$，同时将固有频率 $\omega_n$ 固定为常数。
+实验数据表现出如下极点位置变化：
 \begin{itemize}
-  \item Im Fall $0 < D < 1$ (Unterdämpfung) sind die Pole konjugiert-komplex. Bei einer Änderung von $D$ bewegen sie sich auf einem Kreisbogen um den Ursprung. Dessen Radius entspricht der konstanten Eigenfrequenz $\omega_n$.
-  \item Für $D = 0$ (ungedämpfter Fall) liegen die Pole rein imaginär auf der vertikalen Achse ($s = \pm j\omega_n$).
-  \item Für $D = 1$ (aperiodischer Grenzfall) treffen sich die beiden Pole auf der negativen reellen Achse und bilden einen doppelten reellen Pol bei $s = -\omega_n$.
-  \item Für $D > 1$ (Überdämpfung) trennen sich die Pole auf der reellen Achse auf und wandern als zwei unterschiedliche reelle Pole weiter.
+  \item 当 $0 < D < 1$（欠阻尼）时，极点为共轭复数。改变 $D$ 时，它们沿以原点为中心的圆弧移动，该圆弧半径等于恒定的固有频率 $\omega_n$。
+  \item 当 $D = 0$（无阻尼情况）时，极点为纯虚数，位于竖直轴上（$s = \pm j\omega_n$）。
+  \item 当 $D = 1$（非周期临界情况）时，两个极点在负实轴上重合，并在 $s = -\omega_n$ 处形成一个二重实极点。
+  \item 当 $D > 1$（过阻尼）时，极点在实轴上分离，并作为两个不同的实极点继续移动。
 \end{itemize}
 
-Der Dämpfungsfaktor $D$ steht in direktem Zusammenhang mit dem Winkel $\varphi$ der Polstrahlen zur negativen reellen Achse ($\cos\varphi = D$).
-Eine Verringerung von $D$ schiebt die Pole näher an die imaginäre Achse heran: Der Imaginärteil wächst, der Realteil schrumpft.
-Dies führt im Zeitverhalten zu einer geringeren Systemdämpfung, was sich durch ein stark ausgeprägtes Überschwingen und eine deutlich verlängerte Einschwingzeit bemerkbar macht.
+阻尼系数 $D$ 与极点射线相对于负实轴的夹角 $\varphi$ 直接相关（$\cos\varphi = D$）。
+减小 $D$ 会使极点更靠近虚轴：虚部增大，实部绝对值减小。
+这会在时域中导致系统阻尼减小，表现为明显超调和显著延长的调节时间。
 
-\subsubsection{Zweite Gruppe: Variation der Eigenfrequenz}
+\subsubsection{第二组：改变固有频率}
 
-In der zweiten Versuchsgruppe wird die Eigenfrequenz $\omega_n$ variiert, während der Dämpfungsfaktor $D$ konstant gehalten wird.
-Die Pole bewegen sich auf einer Geraden, die in einem festen Winkel $\varphi$ vom Ursprung wegführt, da das Verhältnis zwischen Real- und Imaginärteil durch das konstante $D$ unverändert bleibt.
-Mit steigendem $\omega_n$ vergrößern sich sowohl der Realteil $\sigma$ als auch der Imaginärteil $\omega_d$ der Pole proportional, wodurch sich die Pole weiter nach außen und tiefer in die linke Halbebene verschieben.
+第二实验组改变固有频率 $\omega_n$，同时保持阻尼系数 $D$ 不变。
+由于实部和虚部之间的比例由恒定的 $D$ 决定，极点沿一条以固定角度 $\varphi$ 从原点出发的直线移动。
+随着 $\omega_n$ 增大，极点的实部 $\sigma$ 和虚部 $\omega_d$ 均按比例增大，因此极点进一步向外并更深入左半平面。
 
-Die Erhöhung der Eigenfrequenz $\omega_n$ führt dazu, dass sich der Realteil der Pole weiter ins Negative verschiebt.
-Das System gewinnt dadurch maßgeblich an Reaktionsgeschwindigkeit und die Einschwingzeit sinkt deutlich.
-Trotz der höheren Schwingungsfrequenz bleibt die relative Dämpfung identisch.
-Das System ist absolut stabil, solange die Pole in der linken Halbebene verbleiben.
+增大固有频率 $\omega_n$ 会使极点实部进一步向负方向移动。
+因此系统响应速度明显提高，调节时间显著缩短。
+尽管振荡频率更高，相对阻尼仍保持不变。
+只要极点仍位于左半平面，系统就是绝对稳定的。
 
-\subsubsection{Zusammenfassung}
+\subsubsection{总结}
 
-Das Diagramm stellt das PT2-System mathematisch dar.
-Es zeigt, dass der radiale Abstand der Pole zum Ursprung die Schnelligkeit $\omega_n$ des Systems beschreibt, während die Winkelkomponente relativ zur reellen Achse die Schwingungsneigung $D$ bestimmt.
-Jede Änderung im Bode-Diagramm oder in der Sprungantwort lässt sich somit direkt aus der Verschiebung dieser beiden Systempole ableiten.
+该图从数学上表示 PT2 系统。
+它表明，极点到原点的径向距离描述系统的速度 $\omega_n$，而相对于实轴的角度分量决定振荡倾向 $D$。
+因此，Bode 图或阶跃响应中的任何变化都可以直接由这两个系统极点的位置变化推导出来。

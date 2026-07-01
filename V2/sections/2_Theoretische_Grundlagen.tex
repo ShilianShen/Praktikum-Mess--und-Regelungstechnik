@@ -1,32 +1,61 @@
-2.1 Thermoelement und Seebeck-Effekt
-Ein Thermoelement besteht aus zwei unterschiedlichen elektrisch leitfähigen Werkstoffen. Befinden sich die beiden Kontaktstellen auf unterschiedlichen Temperaturen, führt die temperaturabhängige Elektronendiffusion zu einer messbaren Thermospannung. Für einen begrenzten Temperaturbereich kann der Zusammenhang näherungsweise linear beschrieben werden [1]:
-U₀ = k_AB · (T₂ - T₁)	(2.1)
-Für das im Versuch verwendete NiCr-Ni-Thermoelement beträgt der im Versuchsskript angegebene Seebeck-Koeffizient k_AB = 37,5 µV/K. Da eine absolute Temperaturmessung eine bekannte Referenztemperatur voraussetzt, wird am AD595 eine elektronische Vergleichsstellenkompensation eingesetzt.
+\subsection{热电偶与 Seebeck 效应}
 
-2.2 Messwertumformer AD595
-Der AD595 übernimmt zwei Aufgaben: Er verstärkt die geringe Thermospannung und kompensiert die Temperatur der Anschluss- beziehungsweise Vergleichsstelle. Die nominale Ausgangsempfindlichkeit beträgt laut Versuchsskript 10 mV/°C. Damit gilt im idealisierten Arbeitsbereich:
-U_AD595 ≈ 10 mV/°C · ϑ	(2.2)
-Bei 100 °C wird daher eine Ausgangsspannung von ungefähr 1,00 V erwartet. Abweichungen entstehen unter anderem durch Bauteiltoleranzen, Nichtlinearität, Offset und unvollständige thermische Kopplung der Vergleichsstelle.
-2.3 Nichtinvertierender Messverstärker
-Zur besseren Ausnutzung des ADC-Eingangsbereichs wird das AD595-Signal mit einem nichtinvertierenden Operationsverstärker verstärkt. Für den idealen Operationsverstärker gilt [1]:
-V = U_a/U_e = 1 + R₂/R₁	(2.3)
+热电偶由两种不同的导电材料组成。当两个接点处于不同温度时，温度相关的电子扩散会产生可测量的热电压。在有限温度范围内，该关系可近似线性表示为：
+\begin{equation}
+  U_0 = k_{AB} \cdot (T_2 - T_1)
+\end{equation}
 
-Der Verstärkungsfaktor muss so gewählt werden, dass die maximale erwartete Temperatur den ADC-Eingangsbereich nicht überschreitet. Bei 120 °C liefert der AD595 idealerweise 1,20 V. Für U_ADC,max = 5 V folgt V_max = 5/1,2 = 4,17. Eine geeignete Sollauslegung ist beispielsweise R₁ = 10,0 kΩ und R₂ = 31,6 kΩ, entsprechend V ≈ 4,16. Die tatsächlich eingestellten Dekadenwerte sind im Ergebnisteil anzugeben.
-2.4 Analog-Digital-Wandler
-Der AD-Wandler diskretisiert, quantisiert und codiert das analoge Eingangssignal. Für einen m-Bit-Wandler mit dem Bereich U_min bis U_max ergibt sich die kleinste Schrittweite gemäß Versuchsskript zu:
-ΔU_LSB = (U_max - U_min)/(2ᵐ - 1)	(2.4)
-Mit m = 8, U_min = 0 V und U_max = 5 V beträgt die Schrittweite 19,61 mV. Ohne Zusatzverstärkung entspricht dies bei 10 mV/°C einer Temperaturstufe von 1,96 °C. Bei V = 4,17 verbessert sich die theoretische Temperaturauflösung auf etwa 0,47 °C. Der Quantisierungsfehler beträgt idealisiert höchstens ±0,5 LSB.
-Zur Kalibrierung wird ein linearer Zusammenhang zwischen Referenztemperatur T und gemessener Ausgangsspannung U angenommen:
-U(T) = m · T + b	(2.5)
-Die Regressionsparameter werden mit der Methode der kleinsten Quadrate bestimmt:
-m = Σ[(Tᵢ-T̄)(Uᵢ-Ū)] / Σ[(Tᵢ-T̄)²]	(2.6)
-b = Ū - m·T̄	(2.7)
-r = Σ[(Tᵢ-T̄)(Uᵢ-Ū)] / √(Σ[(Tᵢ-T̄)²]·Σ[(Uᵢ-Ū)²])	(2.8)
-Für die spätere Echtzeitberechnung wird die Regressionsgerade invertiert: T = (U-b)/m. Ein Betrag des Korrelationskoeffizienten nahe 1 zeigt einen starken linearen Zusammenhang, ersetzt jedoch nicht die Untersuchung systematischer Abweichungen und Residuen.
-2.6 RC-Tiefpass
-Ein Tiefpass erster Ordnung reduziert hochfrequente Störungen, während langsame Temperaturänderungen weitgehend passieren. Grenzfrequenz, Zeitkonstante und Amplitudengang lauten:
-f_g = 1/(2πRC),   τ = RC	(2.9)
-|H(j2πf)| = 1/√(1+(f/f_g)²)	(2.10)
-A_dB = 20·log₁₀(U_nach/U_vor)	(2.11)
+实验中使用的 NiCr-Ni 热电偶在实验讲义中给出的 Seebeck 系数为 $k_{AB} = \SI{37.5}{\micro\volt\per\kelvin}$。由于绝对温度测量需要已知的参考温度，AD595 中使用电子冷端补偿。
 
-Eine Dämpfung von 60 dB entspricht einem Amplitudenverhältnis von 10⁻³. Für eine Störfrequenz von 1 MHz müsste die Grenzfrequenz eines Tiefpasses erster Ordnung näherungsweise höchstens 1 kHz betragen. Die endgültige Dimensionierung erfolgt mit der im Versuch tatsächlich gemessenen Störfrequenz und verfügbaren Dekadenwerten.
+\subsection{测量变换器 AD595}
+
+AD595 承担两个任务：放大很小的热电压，并补偿接线端或参考端的温度。根据实验讲义，额定输出灵敏度为 $\SI{10}{\milli\volt\per\celsius}$。因此在理想工作范围内有：
+\begin{equation}
+  U_{\mathrm{AD595}} \approx \SI{10}{\milli\volt\per\celsius} \cdot \vartheta
+\end{equation}
+
+因此在 $\SI{100}{\celsius}$ 时，预期输出电压约为 $\SI{1.00}{\volt}$。偏差可能由元件公差、非线性、偏置以及参考端热耦合不完全等因素引起。
+
+\subsection{同相测量放大器}
+
+为了更充分利用 ADC 的输入范围，使用同相运算放大器放大 AD595 信号。对于理想运算放大器有：
+\begin{equation}
+  V = \frac{U_a}{U_e} = 1 + \frac{R_2}{R_1}
+\end{equation}
+
+放大倍数必须选择得使最大预期温度不会超过 ADC 输入范围。在 $\SI{120}{\celsius}$ 时，AD595 理想情况下输出 $\SI{1.20}{\volt}$。对于 $U_{\mathrm{ADC,max}} = \SI{5}{\volt}$，得到 $V_{\max} = 5/1.2 = 4.17$。一个合适的目标设计例如为 $R_1 = \SI{10.0}{\kilo\ohm}$、$R_2 = \SI{31.6}{\kilo\ohm}$，对应 $V \approx 4.16$。实际设置的十进制电阻箱数值应在结果部分给出。
+
+\subsection{模数转换器}
+
+AD 转换器对模拟输入信号进行离散化、量化和编码。对于输入范围为 $U_{\min}$ 至 $U_{\max}$ 的 $m$ 位转换器，根据实验讲义，最小步长为：
+\begin{equation}
+  \Delta U_{\mathrm{LSB}} = \frac{U_{\max} - U_{\min}}{2^m - 1}
+\end{equation}
+
+当 $m = 8$、$U_{\min} = \SI{0}{\volt}$ 且 $U_{\max} = \SI{5}{\volt}$ 时，步长为 $\SI{19.61}{\milli\volt}$。没有附加放大时，这在 $\SI{10}{\milli\volt\per\celsius}$ 下对应 $\SI{1.96}{\celsius}$ 的温度步长。当 $V = 4.17$ 时，理论温度分辨率改善到约 $\SI{0.47}{\celsius}$。理想情况下，量化误差最大为 $\pm 0.5\,\mathrm{LSB}$。
+
+校准时假设参考温度 $T$ 与测得输出电压 $U$ 之间存在线性关系：
+\begin{equation}
+  U(T) = m \cdot T + b
+\end{equation}
+
+回归参数通过最小二乘法确定：
+\begin{align}
+  m &= \frac{\sum_i (T_i - \bar{T})(U_i - \bar{U})}{\sum_i (T_i - \bar{T})^2}, \\
+  b &= \bar{U} - m \bar{T}, \\
+  r &= \frac{\sum_i (T_i - \bar{T})(U_i - \bar{U})}{\sqrt{\sum_i (T_i - \bar{T})^2 \sum_i (U_i - \bar{U})^2}}.
+\end{align}
+
+后续实时计算时，将回归直线反解为 $T = (U - b)/m$。相关系数的绝对值接近 1 表明线性相关性强，但不能替代对系统偏差和残差的考察。
+
+\subsection{RC 低通滤波器}
+
+一阶低通滤波器可以降低高频干扰，同时基本允许缓慢温度变化通过。截止频率、时间常数和幅频特性为：
+\begin{align}
+  f_g &= \frac{1}{2\pi RC}, &
+  \tau &= RC, \\
+  \left|H(j2\pi f)\right| &= \frac{1}{\sqrt{1 + (f/f_g)^2}}, \\
+  A_{\mathrm{dB}} &= 20 \log_{10}\left(\frac{U_{\mathrm{nach}}}{U_{\mathrm{vor}}}\right).
+\end{align}
+
+$\SI{60}{\decibel}$ 的衰减对应 $10^{-3}$ 的幅值比。对于 $\SI{1}{\mega\hertz}$ 的干扰频率，一阶低通滤波器的截止频率近似应不高于 $\SI{1}{\kilo\hertz}$。最终参数设计应根据实验中实际测得的干扰频率和可用十进制电阻电容箱数值完成。

@@ -1,26 +1,33 @@
-Die kapazitive Füllstandsmessung nutzt den physikalischen Effekt, dass die Kapazität eines Kondensators von dem zwischen den Elektroden befindlichen Dielektrikum abhängt.
-（1）Kapazitätberechnung
-Die Kapazität eines Plattenkondensators mit Dielektrikum lässt sich mit folgender Formel berechnen:
-wobei A die Kondensatorfläche, d den Plattenabstand und ε die Permittivität charak-terisiert.
-In diesem Versuch wird die Kapazität einer Lecher-Leitung verwendet. Sie lässt sich mit folgender Formel berechnen:
-wobei I für die Länge der Leiter, d für den Abstand zwischen den Leiter-mittelpunkten und R für den Radius der Leiter steht.
-（1）LC-Schwingkreises
-Im Praktikum soll die Kapazitäts-bestimmung mit einem LC-Schwingkreis nach dem Resonanzprinzip erfolgen. Dazuwird die unbekannte Messkapazität in einer Parallelschaltung mit einer bekannten In-duktivität ergänzt.
-Unter der Annahme eines verlustlosen Schwingkreises lässt sich der komplexe Widerstand zu
-berechnen.
-Mit der Forderung nach einer maximalen Impedanz eines solchen Schwingkreises kanndaraus direkt auf die Resonanzfrequenz geschlossen werden:
-(3) Oszillatorschaltung
-Zur präzisen Ermittlung der Resonanzfrequenz wird der Resonator üblicherweise in eine Oszillatorschaltung eingebunden. Der darin arbeitende selbstschwingende Oszillator passt sich automatisch an die Eigenfrequenz des frequenzbestimmenden Elements, beispielsweise eines LC-Schwingkreises oder eines Quarzes, an und stellt ein stabiles periodisches Signal für die anschließende Messung und Auswertung bereit.
-(4) Digitalen Frequenzmessung
-Die zu messende Frequenz wird durch den Vergleich mit einer bekannten Referenzuhr bestimmt. Konkret werden das Messsignal und das Referenzsignal in digitale Impulse umgewandelt und innerhalb eines festgelegten Zeitfensters jeweils gezählt. Anhand der aufgezeichneten Impulszahlen kann die zu messende Frequenz gemäß der folgenden Beziehung berechnet werden:
-(5) Komparator
-Ein Komparator dient dazu, das analoge Signal des Oszillators in ein digitales
-Rechtecksignal umzuwandeln. Die Ausgangsspannung des Komparators wechselt
-dabei zwischen den Pegeln Ua,max und Ua,min, abhängig davon, ob die
-Eingangsspannung U1 über oder unter dem Vergleichswert U2 liegt.
-(6) Schmitt-Trigger
-Zur Sicherstellung einer stabilen digitalen Signalverarbeitung kommt ein Schmitt-Trigger zum Einsatz. Im Unterschied zu einem einfachen Komparator besitzt dieser zwei festgelegte Schaltschwellen, nämlich eine obere und eine untere Schwelle. Dadurch entsteht eine Hysterese, die unerwünschte Schaltvorgänge bei verrauschten Eingangssignalen unterdrückt. Auf diese Weise wird eine zuverlässige Impulszählung zur Bestimmung der Frequenz ermöglicht.
-(7) Systematischer Fehlerfortpflanzung
-Bei vielen Messaufgaben ist die Größe (y) nicht direkt messbar, sondern ergibt sich über eine Funktion y=f(x1,x2,...,xi) aus mehreren Einflussgrößen. Daraus folgt für die Fortpflanzung systematischer Abweichungen:
-Damit kann der Einfluss einzelner Abweichungen auf das Messergebnis abgeschätzt
-werden.
+电容式液位测量利用的物理效应是：电容器的电容取决于电极之间的介电质。
+
+\subsection{电容计算}
+
+带介电质的平板电容器电容可由相应公式计算，其中 $A$ 表示电容器面积，$d$ 表示极板间距，$\varepsilon$ 表示介电常数。
+
+本实验使用 Lecher 线的电容。它同样可由相应公式计算，其中 $l$ 表示导线长度，$d$ 表示导线中心之间的距离，$R$ 表示导线半径。
+
+\subsection{LC 振荡回路}
+
+实验中应根据谐振原理，利用 LC 振荡回路进行电容测定。为此，将未知测量电容与已知电感并联。
+
+在假设振荡回路无损耗的情况下，可计算其复阻抗。由该振荡回路阻抗最大这一条件，可以直接推得谐振频率。
+
+\subsection{振荡电路}
+
+为了精确确定谐振频率，通常将谐振器接入振荡电路。电路中的自激振荡器会自动适应决定频率元件的固有频率，例如 LC 振荡回路或石英晶体，并为后续测量和分析提供稳定的周期信号。
+
+\subsection{数字频率测量}
+
+待测频率通过与已知参考时钟比较来确定。具体而言，将测量信号和参考信号转换为数字脉冲，并在规定时间窗口内分别计数。根据记录的脉冲数，可以按相应关系计算待测频率。
+
+\subsection{比较器}
+
+比较器用于将振荡器的模拟信号转换为数字矩形信号。比较器输出电压在 $U_{a,\max}$ 和 $U_{a,\min}$ 之间切换，具体取决于输入电压 $U_1$ 是高于还是低于比较值 $U_2$。
+
+\subsection{Schmitt 触发器}
+
+为了保证稳定的数字信号处理，使用 Schmitt 触发器。与简单比较器不同，它具有两个固定的开关阈值，即上阈值和下阈值。由此产生的滞回特性可以抑制含噪输入信号导致的不必要开关过程，从而实现可靠的脉冲计数以确定频率。
+
+\subsection{系统误差传播}
+
+在许多测量任务中，量 $y$ 不能直接测量，而是由多个影响量通过函数 $y = f(x_1, x_2, \ldots, x_i)$ 得到。由此可以得到系统偏差的传播关系，并估计各个偏差对测量结果的影响。
