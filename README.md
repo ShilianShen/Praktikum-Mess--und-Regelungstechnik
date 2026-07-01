@@ -62,7 +62,7 @@ Gruppe 9
     - [ ] main Kopie是什么?
 - [ ] 实验文本
   - [ ] Prompt写手
-  - [ ] V1写手(zjh)
+  - [x] V1写手(zjh)
   - [x] V2写手(hxm)
   - [x] V3写手(cyd)
   - [x] V4写手(zht)
