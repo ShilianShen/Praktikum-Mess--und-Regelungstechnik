@@ -12,4 +12,3 @@ plot(V1_sin.time, V1_sin.signals.values);
 grid on;
 exportgraphics(gcf, 'figures/V1_sin.pdf', 'ContentType', 'vector');
 close;
-
